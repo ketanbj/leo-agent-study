@@ -6,6 +6,7 @@ jobs:
   study:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ['3.11', '3.13']
     steps:
@@ -15,8 +16,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: PYTHONPATH=src python -m unittest discover -s tests -v
       - run: PYTHONPATH=src python -m leo_agent_study forecast --output /tmp/forecast
-      - run: diff results/forecast/forecast_report.json /tmp/forecast/forecast_report.json
-      - run: diff results/forecast/forecasts.csv /tmp/forecast/forecasts.csv
+      - run: python scripts/compare_numeric.py results/forecast/forecast_report.json /tmp/forecast/forecast_report.json
+      - run: python scripts/compare_numeric.py results/forecast/forecasts.csv /tmp/forecast/forecasts.csv
       - run: PYTHONPATH=src python -m leo_agent_study synthetic --output /tmp/synthetic
-      - run: diff results/synthetic/summary.json /tmp/synthetic/summary.json
-      - run: cmp results/synthetic/runs.csv.gz /tmp/synthetic/runs.csv.gz
+      - run: python scripts/compare_numeric.py results/synthetic/summary.json /tmp/synthetic/summary.json
+      - run: python scripts/compare_numeric.py results/synthetic/runs.csv.gz /tmp/synthetic/runs.csv.gz

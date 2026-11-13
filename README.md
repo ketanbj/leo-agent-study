@@ -78,7 +78,7 @@ The checked-in run completes all three experiments. The [full results](results/R
 | Localhost HTTP capability | Both policies produce identical synthetic briefs in **5 HTTP requests**, retain the completed first read during a 503 retry, and send/receive **518 / 1,070 payload bytes** | Executes dispatch/retry instrumentation with deterministic JSON fixtures; no real-agent performance claim |
 | Synthetic scheduling | **11,028 paired scenarios / 33,732 policy runs**; **0%** timing gain in FIFO controls; conditional restart oracle **8.13%** lower restricted completion time and **+3.26 pp** completion versus ideal reaction | Equal-weight synthetic sensitivity grid with perfect future knowledge; **8,192 / 10,368** restart scenarios tie, and gains depend on detection/retry assumptions |
 
-Detailed outputs: [forecast JSON](results/forecast/forecast_report.json), [HTTP summary](results/http_probe/summary.json), [synthetic results](results/synthetic/README.md). The executed test suite passes **26 tests**. GitHub Actions reruns tests and compares regenerated deterministic forecast artifacts.
+Detailed outputs: [forecast JSON](results/forecast/forecast_report.json), [HTTP summary](results/http_probe/summary.json), [synthetic results](results/synthetic/README.md). The executed test suite passes **31 tests** (26 study checks and 5 artifact-comparison checks). GitHub Actions reruns tests and compares all regenerated numerical artifacts with a 1e-9 absolute float tolerance (zero relative tolerance); structures, counts, labels and model selections match exactly.
 Model selection uses validation data. A static training-median baseline can beat
 adaptive predictors on validation, while the recent-mean comparator performs
 better on the held-out test. The validation-selected phase candidates do not beat that
@@ -110,7 +110,7 @@ transport-realistic emulation, operator-reviewed tasks and multi-site validation
 These are explicitly marked as unimplemented. Faster execution counts as success
 only when the output is correct and meets the task deadline.
 
-Artifact version: [v0.1.0](https://github.com/ketanbj/leo-agent-study/tree/v0.1.0). The [reproduction manifest](results/reproducibility.json) records commands, environment, verification and SHA256 hashes. [CITATION.cff](CITATION.cff) supplies versioned citation metadata.
+Artifact version: [v0.1.1](https://github.com/ketanbj/leo-agent-study/tree/v0.1.1). The [reproduction manifest](results/reproducibility.json) records commands, environment, verification and SHA256 hashes. [CITATION.cff](CITATION.cff) supplies versioned citation metadata.
 
 ## Attribution and licenses
 

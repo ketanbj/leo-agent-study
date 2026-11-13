@@ -1,9 +1,12 @@
 cff-version: 1.2.0
+authors:
+  - family-names: Bhardwaj
+    given-names: Ketan
 message: "Cite this versioned preliminary artifact; cite the upstream measurement paper and dataset separately when using their data."
 title: "LEO Agent Study: Forecasting, Execution Instrumentation, and Conditional Timing Headroom"
 type: software
-version: 0.1.0
+version: 0.1.1
 date-released: 2026-11-13
 repository-code: "https://github.com/ketanbj/leo-agent-study"
-url: "https://github.com/ketanbj/leo-agent-study/tree/v0.1.0"
+url: "https://github.com/ketanbj/leo-agent-study/tree/v0.1.1"
 license: MIT

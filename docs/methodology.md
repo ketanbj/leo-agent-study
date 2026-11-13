@@ -23,7 +23,7 @@ The forecast reads the committed ping extract. The probe uses real loopback HTTP
 requests to a temporary local fixture server; the synthetic experiment uses
 virtual time. The study writes machine-readable artifacts under `results/`.
 The HTTP probe's generated timestamp and elapsed durations are measured anew and
-are not expected to match byte for byte across runs. Forecast/bootstrap seeds
+are not expected to match byte for byte across runs. Within the recorded environment, deterministic forecast and synthetic artifacts reproduce byte for byte. Across Python versions, float summation can differ at roundoff scale. CI compares finite floats with absolute tolerance 1e-9 and zero relative tolerance, while preserving exact structures, counts, labels and model selections; the comparator is separately tested. Forecast/bootstrap seeds
 and synthetic inputs are recorded for reproducibility. Optional plotting tools
 are not needed for the numerical results or tests.
 

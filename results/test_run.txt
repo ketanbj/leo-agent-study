@@ -1,3 +1,8 @@
+test_cli_counts_streamed_rows_and_reports_one_concise_failure (test_compare_numeric.NumericComparisonTests.test_cli_counts_streamed_rows_and_reports_one_concise_failure) ... ok
+test_csv_and_gzip_accept_roundoff_and_compare_decompressed_rows (test_compare_numeric.NumericComparisonTests.test_csv_and_gzip_accept_roundoff_and_compare_decompressed_rows) ... ok
+test_csv_rejects_headers_counts_selection_and_epoch_drift (test_compare_numeric.NumericComparisonTests.test_csv_rejects_headers_counts_selection_and_epoch_drift) ... ok
+test_json_accepts_roundoff_and_key_order (test_compare_numeric.NumericComparisonTests.test_json_accepts_roundoff_and_key_order) ... ok
+test_json_rejects_structure_selection_counts_and_meaningful_numeric_changes (test_compare_numeric.NumericComparisonTests.test_json_rejects_structure_selection_counts_and_meaningful_numeric_changes) ... ok
 test_collection_gaps_reset_recent_history_and_reduce_coverage (test_forecasting.ForecastingTests.test_collection_gaps_reset_recent_history_and_reduce_coverage) ... ok
 test_descriptive_block_bootstrap_is_reproducible_and_segment_aware (test_forecasting.ForecastingTests.test_descriptive_block_bootstrap_is_reproducible_and_segment_aware) ... ok
 test_fit_is_invariant_to_unavailable_future_observations (test_forecasting.ForecastingTests.test_fit_is_invariant_to_unavailable_future_observations) ... ok
@@ -29,6 +34,6 @@ test_written_records_include_all_policies_and_are_deterministic (test_synthetic_
 test_zero_detection_ideal_reactive_tie_is_retained (test_synthetic_study.SyntheticStudyTests.test_zero_detection_ideal_reactive_tie_is_retained) ... ok
 
 ----------------------------------------------------------------------
-Ran 26 tests in 0.363s
+Ran 31 tests in 0.465s
 
 OK

@@ -1,5 +1,5 @@
 {
-  "artifact_version": "0.1.0",
+  "artifact_version": "0.1.1",
   "run_date": "2026-11-13",
   "environment": {
     "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
@@ -12,11 +12,17 @@
     "PYTHONPATH=src python3 -m unittest discover -s tests -v"
   ],
   "verification": {
-    "tests_passed": 26,
+    "tests_passed": 31,
     "deterministic_forecast_reproduced_byte_for_byte": true,
     "deterministic_synthetic_reproduced_byte_for_byte": true,
     "http_probe_cli_reproduced_expected_counts_and_output": true,
-    "http_elapsed_times_expected_to_vary": true
+    "http_elapsed_times_expected_to_vary": true,
+    "cross_python_comparison": {
+      "float_absolute_tolerance": 1e-09,
+      "float_relative_tolerance": 0.0,
+      "structure_counts_labels_selection": "exact",
+      "reason": "Python 3.11/3.15 summation differences around 1e-15 in bootstrap summaries"
+    }
   },
   "sha256": {
     "data/hawaii_starlink_ping.csv": "a332680afb19e7c746f49ec0eee432b4d9451a097b612392ee808e0fbe8daa52",
@@ -33,7 +39,7 @@
     "results/synthetic/runs.csv.gz": "abf6c8fe7e22a527e068a5d43aa7d398a2df09d12c820bf9e536d3b044c14a84",
     "results/synthetic/summary.csv": "08ef14b23f1efe6cd16c98fd2c0a5a4f032eef5ca59b68bd451e93f7eee2249f",
     "results/synthetic/summary.json": "fc3dc03389dee4216ba6f125c6008190c919ee2b2650f2bb9d4d7411f12fd5a8",
-    "src/leo_agent_study/__init__.py": "3e9841e3da74d09d1ab548ca3af0a690a859426d2196c1ff05ca63e9c2193191",
+    "src/leo_agent_study/__init__.py": "795ff72c3390ebd955760e748bc74d708e31fa54ec8187c5268addab86b0e76f",
     "src/leo_agent_study/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
     "src/leo_agent_study/cli.py": "3830451ae53f013f4a4a21c56a9be5d9afa0230298baed4d50eaa5a9b26adde0",
     "src/leo_agent_study/forecasting.py": "faada152120edcfb5dab338cd609a02fbd4de8a8bde3a6a4d582e1412c531714",
@@ -43,6 +49,9 @@
     "tests/test_forecasting.py": "dd2184a5eb57c015b9cee62c6ab73ddadb494629a7054f02e8a6038fb278af1a",
     "tests/test_http_probe.py": "f20087a82d5d74476c4ff575bd152a999f50c0856cda8f69c46675d522af2d16",
     "tests/test_scheduling.py": "44f8dc55823e4054b92e868847e76b74f2614fca22215c0d1868337b8942ed30",
-    "tests/test_synthetic_study.py": "37266461da9f144975a92214ea0a04f0da90e4bed3652fdfc14b64e0adc2b275"
+    "tests/test_synthetic_study.py": "37266461da9f144975a92214ea0a04f0da90e4bed3652fdfc14b64e0adc2b275",
+    "tests/test_compare_numeric.py": "68db9ac8a20313ba4c28672a3ba4f7ade8f926bc467eadafa0df8d7b7392e94c",
+    "scripts/compare_numeric.py": "0aea7bdd544cb7022758a7f85d93acc8fdc6ab6dd251fb2ecf539e1a1336835c",
+    "pyproject.toml": "ee2b16a8372dad9db1bb377b7cffcc733f9f04f472495ff87d38efc8528254e0"
   }
 }
