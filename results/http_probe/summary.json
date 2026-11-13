@@ -1,0 +1,173 @@
+{
+  "checkpoint_storage": "memory_only; no process-restart or crash-recovery test",
+  "generated_at_utc": "2026-11-13T19:49:46.638948+00:00",
+  "identical_successful_outputs": true,
+  "interpretation": "Dispatch/retry/checkpoint capability only; no predictive-performance or field claim.",
+  "not_evaluated": [
+    "real LLM reasoning",
+    "browser automation",
+    "Starlink or LEO link performance",
+    "disaster-recovery deployment",
+    "predictive scheduling benefit"
+  ],
+  "runs": [
+    {
+      "attempts_by_operation": {
+        "plan": 1,
+        "requirements": 2,
+        "resources": 1,
+        "synthesize": 1
+      },
+      "brief": {
+        "applicable_date": "2026-01-01 (synthetic)",
+        "county": "Example County (synthetic)",
+        "documents": [
+          "Photo identification (fixture only)",
+          "Proof of address (fixture only)"
+        ],
+        "notice": "Synthetic exercise output; not disaster assistance guidance.",
+        "provider": "Example Recovery Information Desk (synthetic)",
+        "sources": [
+          "fixture://example-county/resources",
+          "fixture://example-county/requirements"
+        ],
+        "synthetic": true,
+        "unresolved_items": []
+      },
+      "completed_checkpoint_sources": [
+        "resources",
+        "requirements"
+      ],
+      "error": null,
+      "observed_task_seconds": 0.017559625033754855,
+      "output_sha256": "80bda984094f9f2589339b3e4861e11f4accb5cdb0074416b78885de6ab67c27",
+      "policy": "immediate",
+      "policy_wait_requested_seconds": 0,
+      "request_attempts": 5,
+      "request_payload_bytes": 518,
+      "response_payload_bytes": 1070,
+      "server_request_audit": [
+        {
+          "method": "POST",
+          "path": "/model/plan",
+          "request_payload_bytes": 52,
+          "response_payload_bytes": 161,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/fixtures/resources",
+          "request_payload_bytes": 0,
+          "response_payload_bytes": 240,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/fixtures/requirements",
+          "request_payload_bytes": 0,
+          "response_payload_bytes": 50,
+          "status": 503
+        },
+        {
+          "method": "GET",
+          "path": "/fixtures/requirements",
+          "request_payload_bytes": 0,
+          "response_payload_bytes": 192,
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/model/synthesize",
+          "request_payload_bytes": 466,
+          "response_payload_bytes": 427,
+          "status": 200
+        }
+      ],
+      "success": true
+    },
+    {
+      "attempts_by_operation": {
+        "plan": 1,
+        "requirements": 2,
+        "resources": 1,
+        "synthesize": 1
+      },
+      "brief": {
+        "applicable_date": "2026-01-01 (synthetic)",
+        "county": "Example County (synthetic)",
+        "documents": [
+          "Photo identification (fixture only)",
+          "Proof of address (fixture only)"
+        ],
+        "notice": "Synthetic exercise output; not disaster assistance guidance.",
+        "provider": "Example Recovery Information Desk (synthetic)",
+        "sources": [
+          "fixture://example-county/resources",
+          "fixture://example-county/requirements"
+        ],
+        "synthetic": true,
+        "unresolved_items": []
+      },
+      "completed_checkpoint_sources": [
+        "resources",
+        "requirements"
+      ],
+      "error": null,
+      "observed_task_seconds": 0.07241337501909584,
+      "output_sha256": "80bda984094f9f2589339b3e4861e11f4accb5cdb0074416b78885de6ab67c27",
+      "policy": "bounded_wait",
+      "policy_wait_requested_seconds": 0.05,
+      "request_attempts": 5,
+      "request_payload_bytes": 518,
+      "response_payload_bytes": 1070,
+      "server_request_audit": [
+        {
+          "method": "POST",
+          "path": "/model/plan",
+          "request_payload_bytes": 52,
+          "response_payload_bytes": 161,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/fixtures/resources",
+          "request_payload_bytes": 0,
+          "response_payload_bytes": 240,
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "path": "/fixtures/requirements",
+          "request_payload_bytes": 0,
+          "response_payload_bytes": 50,
+          "status": 503
+        },
+        {
+          "method": "GET",
+          "path": "/fixtures/requirements",
+          "request_payload_bytes": 0,
+          "response_payload_bytes": 192,
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/model/synthesize",
+          "request_payload_bytes": 466,
+          "response_payload_bytes": 427,
+          "status": 200
+        }
+      ],
+      "success": true
+    }
+  ],
+  "schema_version": 1,
+  "settings": {
+    "inject_transient_failure": true,
+    "max_attempts": 2,
+    "max_policy_wait_seconds": 0.05,
+    "policy_wait_seconds": 0.01,
+    "retry_backoff_seconds": 0.002
+  },
+  "study_type": "measured_localhost_capability_probe",
+  "synthetic_workflow": true
+}

@@ -1,0 +1,34 @@
+test_collection_gaps_reset_recent_history_and_reduce_coverage (test_forecasting.ForecastingTests.test_collection_gaps_reset_recent_history_and_reduce_coverage) ... ok
+test_descriptive_block_bootstrap_is_reproducible_and_segment_aware (test_forecasting.ForecastingTests.test_descriptive_block_bootstrap_is_reproducible_and_segment_aware) ... ok
+test_fit_is_invariant_to_unavailable_future_observations (test_forecasting.ForecastingTests.test_fit_is_invariant_to_unavailable_future_observations) ... ok
+test_predictions_only_use_available_replies_and_label_persistence (test_forecasting.ForecastingTests.test_predictions_only_use_available_replies_and_label_persistence) ... ok
+test_validation_labels_arrive_before_test_and_selection_ignores_test (test_forecasting.ForecastingTests.test_validation_labels_arrive_before_test_and_selection_ignores_test) ... ok
+test_exhausted_retry_does_not_synthesize_or_forge_completion (test_http_probe.HttpProbeTests.test_exhausted_retry_does_not_synthesize_or_forge_completion) ... ok
+test_no_injected_failure_needs_no_retry (test_http_probe.HttpProbeTests.test_no_injected_failure_needs_no_retry) ... ok
+test_real_requests_have_causal_events_and_retry_budget (test_http_probe.HttpProbeTests.test_real_requests_have_causal_events_and_retry_budget) ... ok
+test_wait_and_retry_limits_are_enforced (test_http_probe.HttpProbeTests.test_wait_and_retry_limits_are_enforced) ... ok
+test_capacity_and_fixed_propagation_are_integrated (test_scheduling.CapacityServiceTests.test_capacity_and_fixed_propagation_are_integrated) ... ok
+test_invalid_noncontiguous_and_negative_traces_rejected (test_scheduling.CapacityServiceTests.test_invalid_noncontiguous_and_negative_traces_rejected) ... ok
+test_outage_boundary_is_end_exclusive (test_scheduling.CapacityServiceTests.test_outage_boundary_is_end_exclusive) ... ok
+test_progress_is_preserved_across_zero_capacity (test_scheduling.CapacityServiceTests.test_progress_is_preserved_across_zero_capacity) ... ok
+test_trace_exhaustion_is_not_extrapolated (test_scheduling.CapacityServiceTests.test_trace_exhaustion_is_not_extrapolated) ... ok
+test_arbitrary_waits_cannot_improve_progress_preserving_chain (test_scheduling.SchedulingControls.test_arbitrary_waits_cannot_improve_progress_preserving_chain)
+A broad seeded invariant, rather than one favorable parameter case. ... ok
+test_backoff_is_counted_and_retry_limit_includes_initial_attempt (test_scheduling.SchedulingControls.test_backoff_is_counted_and_retry_limit_includes_initial_attempt) ... ok
+test_backwards_policy_rejected (test_scheduling.SchedulingControls.test_backwards_policy_rejected) ... ok
+test_deadline_charges_policy_wait_and_early_failure (test_scheduling.SchedulingControls.test_deadline_charges_policy_wait_and_early_failure) ... ok
+test_local_work_counts_against_deadline (test_scheduling.SchedulingControls.test_local_work_counts_against_deadline) ... ok
+test_no_outage_modes_agree (test_scheduling.SchedulingControls.test_no_outage_modes_agree) ... ok
+test_retry_limit_is_finite_even_with_zero_detection_and_backoff (test_scheduling.SchedulingControls.test_retry_limit_is_finite_even_with_zero_detection_and_backoff) ... ok
+test_slow_failure_detection_can_create_admission_headroom (test_scheduling.SchedulingControls.test_slow_failure_detection_can_create_admission_headroom)
+Positive timing gain has an explicit extra assumption and cost. ... ok
+test_strong_reactive_can_match_perfect_future_completion (test_scheduling.SchedulingControls.test_strong_reactive_can_match_perfect_future_completion)
+Prediction does not get a forced time advantage over a strong control. ... ok
+test_paired_progress_control_has_no_positive_headroom (test_synthetic_study.SyntheticStudyTests.test_paired_progress_control_has_no_positive_headroom) ... ok
+test_written_records_include_all_policies_and_are_deterministic (test_synthetic_study.SyntheticStudyTests.test_written_records_include_all_policies_and_are_deterministic) ... ok
+test_zero_detection_ideal_reactive_tie_is_retained (test_synthetic_study.SyntheticStudyTests.test_zero_detection_ideal_reactive_tie_is_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.363s
+
+OK

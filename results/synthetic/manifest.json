@@ -1,0 +1,19 @@
+{
+  "data_sha256": {
+    "README.md": "a303bf4ae27fcdb93f09ddd4bb0335c2249dce65bd355afa705d11fc0a09c5c5",
+    "configuration.json": "1ecbf23a62592d0abfb864103168f6601fe36dade6cd6e664446cc89421cd273",
+    "runs.csv.gz": "abf6c8fe7e22a527e068a5d43aa7d398a2df09d12c820bf9e536d3b044c14a84",
+    "summary.csv": "08ef14b23f1efe6cd16c98fd2c0a5a4f032eef5ca59b68bd451e93f7eee2249f",
+    "summary.json": "fc3dc03389dee4216ba6f125c6008190c919ee2b2650f2bb9d4d7411f12fd5a8"
+  },
+  "environment": {
+    "platform": "macOS-14.8.9-arm64-arm-64bit-Mach-O",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 16.0.0 (clang-1600.0.26.6)]"
+  },
+  "reproduce": "python -m leo_agent_study.synthetic_study --output results/synthetic",
+  "schema_version": 1,
+  "source_sha256": {
+    "scheduling.py": "eecc61929938ffc3a85e1351ffff584451983353a53919fcdd43f5f9de984086",
+    "synthetic_study.py": "b745f7a2c32311276c351ae16af7d41171939ba8ffdd20d171943f75e5357618"
+  }
+}

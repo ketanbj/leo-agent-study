@@ -1,0 +1,183 @@
+[
+  {
+    "id": "current-us-starlink-traces",
+    "category": "experiment",
+    "priority": "P0",
+    "title": "Experiment: collect continuous US Starlink traces with explicit loss and timestamp semantics",
+    "labels": [
+      "experiment",
+      "data",
+      "priority:p0"
+    ],
+    "depends_on": [],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. The repository currently includes an openly licensed August 2024 Maui mobile-drive trace. Its ping extract contains successful RTT observations only; collection gaps do not establish packet loss. It does not represent current service, a stationary recovery hub, North Carolina, or Hurricane Helene operations.\n\nThe parent research project plans to deploy Starlink terminals for measurement. No project connection or project-recorded traces are available for this initial study. Integrate this protocol with that planned deployment and distinguish planned equipment from operational measurement access.\n\nDefine and implement a prospective US Starlink measurement protocol. Record probe send/reply timestamps, sequence numbers, explicit failed probes/timeouts, monotonic and UTC clock mapping, terminal telemetry, configuration, offered load, and collection uptime. Seek a North Carolina recovery/community-hub setting only if an operator independently agrees; no operator access, collaboration, commitment, or willingness is currently established. Publicly reported deployments are context rather than evidence of recurring agent delays.\n\nDeliver a versioned, consent-appropriate trace release or reproducible controlled-access process with provenance, data rights, measurement configuration and gap semantics. Preserve collection interruption separately from observed loss and service outage.\n\nDependencies: None.\n\nAcceptance criteria:\n- [ ] A documented collection protocol distinguishes failed probes, missing logger data, terminal events and application failures; collection clock error and sample availability are reported.\n- [ ] At least one continuous current US Starlink session is collected and released or made reproducibly accessible with explicit provenance and reuse rights; location and stationary/mobile status are recorded.\n- [ ] Any North Carolina/hub access is recorded only after actual permission; unsuccessful or unavailable access remains documented as an unmet objective.\n- [ ] A quality report includes counts, actual cadence, collection gaps, explicit loss denominators and terminal/application timestamp semantics.",
+    "acceptance_criteria": [
+      "A documented collection protocol distinguishes failed probes, missing logger data, terminal events and application failures; collection clock error and sample availability are reported.",
+      "At least one continuous current US Starlink session is collected and released or made reproducibly accessible with explicit provenance and reuse rights; location and stationary/mobile status are recorded.",
+      "Any North Carolina/hub access is recorded only after actual permission; unsuccessful or unavailable access remains documented as an unmet objective.",
+      "A quality report includes counts, actual cadence, collection gaps, explicit loss denominators and terminal/application timestamp semantics."
+    ]
+  },
+  {
+    "id": "parent-award-predictor",
+    "category": "integration request",
+    "priority": "P0",
+    "title": "Integration request: connect the parent-award route and RTT predictor to causal dispatch control",
+    "labels": [
+      "integration-request",
+      "prediction",
+      "priority:p0"
+    ],
+    "depends_on": [
+      "current-us-starlink-traces"
+    ],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. forecasting.py currently evaluates empirical phase and recent-RTT baselines on public measurements. It does not implement or integrate orbital, satellite-route, gateway, or parent-award prediction.\n\nSpecify an adapter for the actual parent-award predictor, including its required inputs, licensing/access conditions, forecast target, horizon, production time, validity interval, confidence and abstention behavior. Keep empirical phase models explicitly labeled as baselines. Predictor outputs must be available before the dispatch decision; satellite/route labels derived with future knowledge are excluded.\n\nCompare the integrated predictor against persistence, recent mean, training-only phase and a clearly labeled oracle on the same chronological hold-out. Report whether route information adds usable predictive value and whether uncertainty permits safe abstention; a negative result is valid.\n\nDependencies: current-us-starlink-traces.\n\nAcceptance criteria:\n- [ ] A documented adapter accepts actual predictor output or records that the parent implementation is unavailable; fabricated route forecasts are never presented as an integration.\n- [ ] Every forecast has an issuance/availability timestamp, target definition, horizon, validity and uncertainty or an explicit declaration that uncertainty is unavailable.\n- [ ] Held-out comparison uses training-only preprocessing and model selection, preserves collection gaps, and reports coverage, error and calibration where defined.\n- [ ] An ablation isolates the added contribution of route/orbital information from empirical phase and recent-history baselines.",
+    "acceptance_criteria": [
+      "A documented adapter accepts actual predictor output or records that the parent implementation is unavailable; fabricated route forecasts are never presented as an integration.",
+      "Every forecast has an issuance/availability timestamp, target definition, horizon, validity and uncertainty or an explicit declaration that uncertainty is unavailable.",
+      "Held-out comparison uses training-only preprocessing and model selection, preserves collection gaps, and reports coverage, error and calibration where defined.",
+      "An ablation isolates the added contribution of route/orbital information from empirical phase and recent-history baselines."
+    ]
+  },
+  {
+    "id": "local-browser-agent",
+    "category": "integration request",
+    "priority": "P0",
+    "title": "Integration request: instrument a real agent operating a local browser across the LEO link",
+    "labels": [
+      "integration-request",
+      "agent",
+      "browser",
+      "priority:p0"
+    ],
+    "depends_on": [
+      "validated-recovery-tasks",
+      "measured-network-emulation"
+    ],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. http_probe.py is a scripted localhost HTTP fixture with deterministic JSON responses; it does not run a browser, invoke an LLM, or measure agent behavior over Starlink.\n\nIntegrate a supported agent runtime with a browser process on the local host at the LEO endpoint. The browser's remote page/API traffic and any remote-model interaction traverse the measured/emulated link. Record the process/network placement explicitly. Expose dispatch, navigation/read readiness, bounded retries, completed evidence and task deadlines through an adapter without changing the task objective or supplying future trace information.\n\nUse read-only, repeatable tasks and retain source-backed output validation. Measure the agent under immediate dispatch, a causal predictor-driven policy, and a clearly labeled oracle where meaningful, with identical task inputs and network conditions.\n\nDependencies: validated-recovery-tasks; measured-network-emulation.\n\nAcceptance criteria:\n- [ ] A runnable adapter drives an actual local browser through a supported agent runtime; process placement and network path are demonstrated in logs.\n- [ ] End-to-end logs connect agent decisions, browser operations, network events, retries, completed evidence and output validation using stable identifiers.\n- [ ] Paired runs compare immediate and causal predictive policies under the same workload and network replay, with no future trace access by deployable policies.\n- [ ] Task completion, deadline attainment, correctness, retries and policy-induced waiting are reported separately; any changed agent behavior is documented.",
+    "acceptance_criteria": [
+      "A runnable adapter drives an actual local browser through a supported agent runtime; process placement and network path are demonstrated in logs.",
+      "End-to-end logs connect agent decisions, browser operations, network events, retries, completed evidence and output validation using stable identifiers.",
+      "Paired runs compare immediate and causal predictive policies under the same workload and network replay, with no future trace access by deployable policies.",
+      "Task completion, deadline attainment, correctness, retries and policy-induced waiting are reported separately; any changed agent behavior is documented."
+    ]
+  },
+  {
+    "id": "llm-json-streaming",
+    "category": "integration request",
+    "priority": "P0",
+    "title": "Integration request: measure real remote LLM JSON and streaming interactions over LEO",
+    "labels": [
+      "integration-request",
+      "llm",
+      "instrumentation",
+      "priority:p0"
+    ],
+    "depends_on": [
+      "measured-network-emulation"
+    ],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. The current HTTP probe exchanges JSON with a deterministic localhost service; it supplies no measurement of real LLM inference, provider queueing, streaming, or recovery semantics.\n\nAdd an opt-in adapter for a real remote LLM API with structured JSON tool calls and streaming responses. Record request preparation and bytes, connection reuse/establishment, send completion, first response byte/event, stream events, final response, parse/validation outcome, cancellation and retries. Separate observable transport timing from remote model timing; provider-side compute or queueing is unknown unless independently exposed. Do not label a stream that must restart as resumable.\n\nRecord model/provider/API version and requested generation settings, protect credentials and redact sensitive prompts. Fixtures remain available for offline reproduction, while real-provider results are explicitly distinguished and include invocation count/cost accounting.\n\nDependencies: measured-network-emulation.\n\nAcceptance criteria:\n- [ ] A documented opt-in adapter performs actual remote non-streamed JSON and streamed structured-output requests; secrets are excluded from logs and repository history.\n- [ ] Event logs distinguish connection, request transmission, first response event, full response, parsing/validation and retry outcomes without inferring unavailable provider timing.\n- [ ] Interruptions during upload, remote inference wait and response streaming are tested; observed reconnect/retry/resume behavior is reported by phase.\n- [ ] Provider/model/version/settings, invocation counts, cost where available, output correctness and structured-call failures accompany reproducible experimental artifacts.",
+    "acceptance_criteria": [
+      "A documented opt-in adapter performs actual remote non-streamed JSON and streamed structured-output requests; secrets are excluded from logs and repository history.",
+      "Event logs distinguish connection, request transmission, first response event, full response, parsing/validation and retry outcomes without inferring unavailable provider timing.",
+      "Interruptions during upload, remote inference wait and response streaming are tested; observed reconnect/retry/resume behavior is reported by phase.",
+      "Provider/model/version/settings, invocation counts, cost where available, output correctness and structured-call failures accompany reproducible experimental artifacts."
+    ]
+  },
+  {
+    "id": "measured-network-emulation",
+    "category": "experiment",
+    "priority": "P0",
+    "title": "Experiment: replay measured delay and explicit loss with transport-realistic request progress",
+    "labels": [
+      "experiment",
+      "network-emulation",
+      "priority:p0"
+    ],
+    "depends_on": [
+      "current-us-starlink-traces"
+    ],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. scheduling.py is a synthetic timing model with capacity integrated over time and explicit failure assumptions. It does not reproduce measured Starlink transport, packet loss, browser traffic, or an LLM stream. Its progress-preserving FIFO case is a negative control, and restart-on-outage behavior is a deliberately stronger synthetic assumption.\n\nBuild a reproducible packet/transport-level emulator for measured delay and independently observed loss. Do not assign a whole operation a latency or bandwidth value from its dispatch instant: requests already in flight must experience subsequent network evolution. Preserve connection establishment, TCP/QUIC behavior where supported, queueing and concurrent flows, payload progress, inference wait and response streaming. A single RTT series does not establish directional one-way delay or loss; document any assumed decomposition and test sensitivity.\n\nValidate emulator output against the supplied trace and controlled known cases before interpreting admission benefits. A delay-only FIFO system may show no improvement from deferring work; retain that finding as a control. Separate causal prediction from perfect-future oracle headroom.\n\nDependencies: current-us-starlink-traces.\n\nAcceptance criteria:\n- [ ] A reproducible emulator configuration applies time-varying impairments throughout in-flight transfers; dispatch-time-only sampling is excluded.\n- [ ] Delay, loss and capacity inputs have separate provenance; successful-only ping gaps and achieved throughput are never converted into loss/capacity measurements.\n- [ ] Known-condition tests and a progress-preserving negative control validate event timing, transmitted bytes, connection/retry behavior and the effect of induced interruption.\n- [ ] Paired baseline/causal/oracle runs report correctness, deadline attainment, completion-time distributions, waiting/retry overhead and sensitivity to unmeasured assumptions.",
+    "acceptance_criteria": [
+      "A reproducible emulator configuration applies time-varying impairments throughout in-flight transfers; dispatch-time-only sampling is excluded.",
+      "Delay, loss and capacity inputs have separate provenance; successful-only ping gaps and achieved throughput are never converted into loss/capacity measurements.",
+      "Known-condition tests and a progress-preserving negative control validate event timing, transmitted bytes, connection/retry behavior and the effect of induced interruption.",
+      "Paired baseline/causal/oracle runs report correctness, deadline attainment, completion-time distributions, waiting/retry overhead and sensitivity to unmeasured assumptions."
+    ]
+  },
+  {
+    "id": "validated-recovery-tasks",
+    "category": "experiment",
+    "priority": "P0",
+    "title": "Experiment: validate representative recovery-information tasks and correctness criteria with an operator",
+    "labels": [
+      "experiment",
+      "task-validation",
+      "priority:p0"
+    ],
+    "depends_on": [],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. Current task content is a synthetic recovery-information fixture. No recovery organization has agreed to define tasks, validated task fidelity, or committed to a pilot.\n\nDefine a small read-only task suite grounded in public North Carolina recovery-information workflows, then request operator review only through a separately authorized outreach process. Candidate tasks may retrieve and reconcile source-backed public resource information, requirements and updates, but their relevance, ordering, deadline, failure cost and evaluation rubric remain hypotheses until reviewed. Real benefits applications, personal casework, emergency decisions and external submissions are outside the initial study.\n\nVersion source snapshots and reference outputs. Evaluate whether the agent produces the correct, current-at-snapshot, cited and complete result, including appropriate abstention when evidence is unavailable. A faster incorrect answer is not a successful completion.\n\nDependencies: None.\n\nAcceptance criteria:\n- [ ] Each task has versioned source snapshots, provenance, dependencies, a justified task deadline, source-backed correctness criteria and explicitly synthetic or operator-reviewed status.\n- [ ] A real operator's review or the absence of operator validation is recorded accurately; no willingness or partnership is inferred from public deployment reports.\n- [ ] Independent output scoring distinguishes correct complete outputs, incomplete outputs, unsupported claims, source staleness and justified abstention.\n- [ ] At least one evaluation varies dependencies and payload/stream sizes while preserving the same task objective; task-fidelity limitations are reported.",
+    "acceptance_criteria": [
+      "Each task has versioned source snapshots, provenance, dependencies, a justified task deadline, source-backed correctness criteria and explicitly synthetic or operator-reviewed status.",
+      "A real operator's review or the absence of operator validation is recorded accurately; no willingness or partnership is inferred from public deployment reports.",
+      "Independent output scoring distinguishes correct complete outputs, incomplete outputs, unsupported claims, source staleness and justified abstention.",
+      "At least one evaluation varies dependencies and payload/stream sizes while preserving the same task objective; task-fidelity limitations are reported."
+    ]
+  },
+  {
+    "id": "continuous-multisite-validation",
+    "category": "experiment",
+    "priority": "P1",
+    "title": "Experiment: test continuous-session and multi-location generalization before pilot claims",
+    "labels": [
+      "experiment",
+      "validation",
+      "priority:p1"
+    ],
+    "depends_on": [
+      "current-us-starlink-traces",
+      "parent-award-predictor",
+      "local-browser-agent",
+      "llm-json-streaming",
+      "validated-recovery-tasks"
+    ],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. The present public-data study uses a single historical Maui drive-test release with many collection gaps. It does not establish current-service performance, multi-site generalization, or disaster-hub impact.\n\nPre-register the comparison and evaluate across held-out future continuous sessions, distinct days and multiple US locations/terminals. Include stationary shared-link sessions and variation in load where access permits. Use leave-one-site/session-out or strictly future hold-outs, freeze model selection before test evaluation, and account for temporal/task dependence in uncertainty estimates. All attempted tasks, including timeouts and abstentions, belong in the denominator.\n\nReport predictability and downstream task outcomes separately. Test performance under distribution shift, forecast staleness, clock uncertainty and out-of-distribution abstention. Determine whether any measured gain is consistent across sites or concentrated in a particular link, workload or assumed failure mechanism.\n\nDependencies: current-us-starlink-traces; parent-award-predictor; local-browser-agent; llm-json-streaming; validated-recovery-tasks.\n\nAcceptance criteria:\n- [ ] The evaluation plan specifies sites/sessions, hold-out boundaries, model-selection rules, task/sample denominators and primary outcomes before held-out analysis.\n- [ ] At least two distinct US sites or terminals and multiple continuous sessions are evaluated, or the unmet coverage target is stated without generalization claims.\n- [ ] Reports include per-site/session/task results and dependence-aware uncertainty; failures, waiting, missed deadlines, correctness and abstention remain visible.\n- [ ] Ablations quantify forecast staleness, load, task size/depth, clock uncertainty and predictor abstention; field evidence is distinguished from controlled emulation.",
+    "acceptance_criteria": [
+      "The evaluation plan specifies sites/sessions, hold-out boundaries, model-selection rules, task/sample denominators and primary outcomes before held-out analysis.",
+      "At least two distinct US sites or terminals and multiple continuous sessions are evaluated, or the unmet coverage target is stated without generalization claims.",
+      "Reports include per-site/session/task results and dependence-aware uncertainty; failures, waiting, missed deadlines, correctness and abstention remain visible.",
+      "Ablations quantify forecast staleness, load, task size/depth, clock uncertainty and predictor abstention; field evidence is distinguished from controlled emulation."
+    ]
+  },
+  {
+    "id": "durable-task-state",
+    "category": "feature request",
+    "priority": "P1",
+    "title": "Feature request: persist completed evidence and restore a task after interruption",
+    "labels": [
+      "feature-request",
+      "reliability",
+      "priority:p1"
+    ],
+    "depends_on": [
+      "local-browser-agent",
+      "llm-json-streaming",
+      "validated-recovery-tasks"
+    ],
+    "status": "Not yet implemented",
+    "body": "Status: not yet implemented. The current scripted HTTP probe preserves completed read results in memory across a failed operation. It does not provide crash recovery, durable checkpoints, browser-session restoration, or safe resumption of a real provider stream.\n\nImplement durable task state for validated read-only workflows. Persist completed operation identifiers, evidence, source versions, dependency state, partial-output status and relevant retry metadata. On restart, verify that retained evidence is still valid for the task snapshot, restore only supported browser/agent state, and retry only incomplete operations. Define idempotency and token/credential handling explicitly; expired sessions and non-resumable streams require a recorded fallback rather than an assumed resume.\n\nExpose checkpoint overhead and stale-evidence rejection so reliability costs enter the deadline analysis.\n\nDependencies: local-browser-agent; llm-json-streaming; validated-recovery-tasks.\n\nAcceptance criteria:\n- [ ] A versioned checkpoint schema stores completed evidence and dependency state without credentials or sensitive case information.\n- [ ] A process-kill/restart experiment demonstrates restoration of a real read-only task without redoing already validated completed operations when still valid.\n- [ ] Expired browser sessions, stale evidence, interrupted structured JSON and non-resumable streams produce documented retry/abstention behavior rather than silent reuse.\n- [ ] Checkpoint and recovery overhead, duplicated operations, output correctness and deadline outcomes are reported against an in-memory-only baseline.",
+    "acceptance_criteria": [
+      "A versioned checkpoint schema stores completed evidence and dependency state without credentials or sensitive case information.",
+      "A process-kill/restart experiment demonstrates restoration of a real read-only task without redoing already validated completed operations when still valid.",
+      "Expired browser sessions, stale evidence, interrupted structured JSON and non-resumable streams produce documented retry/abstention behavior rather than silent reuse.",
+      "Checkpoint and recovery overhead, duplicated operations, output correctness and deadline outcomes are reported against an in-memory-only baseline."
+    ]
+  }
+]

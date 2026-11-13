@@ -1,0 +1,141 @@
+{
+  "archive_bytes": 20882185,
+  "archive_members": {
+    "ping": "hawaii_road_test_202408/processed/ping/starlink_ping.csv",
+    "terminal": "hawaii_road_test_202408/processed/starlink/starlink_metric.app_tput_filtered.csv"
+  },
+  "archive_sha256": "1244e57095b057d460e2cf986f5cec6d85ba40b52d41874fa438e2711edba013",
+  "archive_url": "https://media.githubusercontent.com/media/NUWiNS/sigmetrics26-exploring-the-5g-digital-divide-in-the-non-contiguous-us-leo-satellites-to-the-rescue/b5f330d508e08e8e1fcd2300529a45f1bbb3231d/datasets/hawaii_road_test_202408.processed.tar.gz",
+  "authors": "Sizhe Wang, Moinak Ghoshal, Yufei Feng, Imran Khan, Phuc Dinh, Omar Basit, Zhekun Yu, Y. Charlie Hu, Dimitrios Koutsonikolas",
+  "copyright_notice": "Copyright (c) 2024-2026 Sizhe Wang, Moinak Ghoshal, Yufei Feng, Imran Khan, Phuc Dinh, Omar Basit, Zhekun Yu, Y. Charlie Hu, Dimitrios Koutsonikolas",
+  "dataset": "Exploring the 5G Digital Divide in the Non-Contiguous US: LEO Satellites to the Rescue? \u2014 Maui, Hawaii road test, August 2024",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "limitations": [
+    "Measurements are from mobile Maui drive tests, not disaster recovery, Hurricane Helene, North Carolina, or AI agents.",
+    "Ping contains only finite successful RTT measurements and has no sequence numbers, sent-probe count, or explicit failed-probe rows. Gaps cannot establish loss or outage duration.",
+    "Irregular sample intervals and long collection gaps remain. Do not interpolate across gaps; report temporal hold-out and the gap threshold.",
+    "Do not claim satellite-phase causality from timestamp predictability alone; shared load, mobility, route, and collection effects are confounders.",
+    "A trace replay or RTT forecast is a preliminary network experiment; it is not measured agent completion performance."
+  ],
+  "normalization": {
+    "compression": "Terminal CSV is gzip compressed with mtime=0 for deterministic output.",
+    "outages": "Outage fields are retained as source telemetry. Repeated event fields are not independently verified current-state labels or packet-loss indicators.",
+    "ping_timestamp_semantics": "Unknown whether source time labels probe send or reply. Conservatively make a finite RTT sample usable at timestamp_s + rtt_ms/1000. Absolute local_dt is trusted over inconsistent source utc_ts; cross-stream clock synchronization is not independently validated.",
+    "rows": "All rows retained in original order. No interpolation, resampling, artificial loss rows, or imputation. source_row is 1-based original CSV data-row number.",
+    "source_session": "Constant campaign identifier; not an uninterrupted run. Split at gaps before time-series prediction.",
+    "terminal_timestamp_semantics": "Source local_dt equals response time in inspected rows; canonical timestamp is parsed local_dt. Explicit gRPC request and response times are retained. Terminal latency_ms is a vendor-reported metric, not ICMP RTT or an application request service time.",
+    "throughput": "Terminal tput_dl_bps and tput_ul_bps are measured achieved traffic rates, retained only as raw context; they do not estimate available service capacity.",
+    "timestamp_quality_warning": "Every ping source utc_ts is exactly 36000 seconds earlier than offset-aware local_dt; terminal source utc_ts is milliseconds, truncated to integer milliseconds. source_utc_ts is preserved unmodified in both outputs.",
+    "timestamp_s": "Unix UTC seconds derived from offset-aware source local_dt, retaining microseconds."
+  },
+  "outputs": {
+    "hawaii_starlink_ping.csv": {
+      "bytes": 956148,
+      "sha256": "a332680afb19e7c746f49ec0eee432b4d9451a097b612392ee808e0fbe8daa52"
+    },
+    "hawaii_starlink_terminal.csv.gz": {
+      "bytes": 2328581,
+      "sha256": "dcaa1d6e079484b41dfde4fcc8e8202a86256552811669f32f1bd0851bb67d31"
+    }
+  },
+  "paper_doi": "10.1145/3771568",
+  "quality": {
+    "ping": {
+      "duplicate_timestamps": 0,
+      "gaps_gt_2s": 69,
+      "gaps_gt_5s": 57,
+      "gaps_gt_60s": 51,
+      "interval_seconds_quantiles_nearest_order_statistic": {
+        "0": 7.009506225585938e-05,
+        "0.01": 0.10423994064331055,
+        "0.25": 0.19593501091003418,
+        "0.5": 0.2035667896270752,
+        "0.75": 0.2076280117034912,
+        "0.95": 0.24723410606384277,
+        "0.99": 2.0578410625457764,
+        "1": 79771.05633187294
+      },
+      "latency_ms_quantiles_nearest_order_statistic": {
+        "0": 79.8,
+        "0.01": 88.7,
+        "0.25": 99.0,
+        "0.5": 109.0,
+        "0.75": 133.0,
+        "0.95": 161.0,
+        "0.99": 227.0,
+        "1": 4148.0
+      },
+      "local_day_counts": {
+        "2024-08-16": 2203,
+        "2024-08-17": 2583,
+        "2024-08-18": 1146,
+        "2024-08-19": 883
+      },
+      "missing_latency_rows": 0,
+      "negative_intervals": 0,
+      "nonfinite_latency_rows": 0,
+      "rows": 6815,
+      "source_utc_ts_minus_offset_aware_time_s_max": -36000.0,
+      "source_utc_ts_minus_offset_aware_time_s_min": -36000.0,
+      "sum_intervals_at_most_2s": 1422.840787410736,
+      "timestamp_end_utc": "2024-08-19T21:39:16.010099+00:00",
+      "timestamp_start_utc": "2024-08-17T02:37:33.063021+00:00"
+    },
+    "terminal": {
+      "duplicate_timestamps": 0,
+      "gaps_gt_2s": 278,
+      "gaps_gt_5s": 134,
+      "gaps_gt_60s": 51,
+      "interval_seconds_quantiles_nearest_order_statistic": {
+        "0": 0.2624349594116211,
+        "0.01": 0.31792187690734863,
+        "0.25": 0.39303112030029297,
+        "0.5": 0.4385380744934082,
+        "0.75": 0.5026230812072754,
+        "0.95": 0.6867630481719971,
+        "0.99": 1.054931879043579,
+        "1": 79322.4910800457
+      },
+      "latency_ms_quantiles_nearest_order_statistic": {
+        "0": 47.922134,
+        "0.01": 61.126427,
+        "0.25": 71.943436,
+        "0.5": 75.4959,
+        "0.75": 79.96941,
+        "0.95": 126.6406,
+        "0.99": 437.61142,
+        "1": 13223.653
+      },
+      "local_day_counts": {
+        "2024-08-16": 16482,
+        "2024-08-17": 21914,
+        "2024-08-18": 8613,
+        "2024-08-19": 6035
+      },
+      "missing_latency_rows": 0,
+      "negative_intervals": 0,
+      "nonfinite_latency_rows": 0,
+      "outage_cause_row_counts_not_outage_durations": {
+        "EMPTY": 48755,
+        "NO_DOWNLINK": 2024,
+        "NO_PINGS": 320,
+        "NO_SCHEDULE": 1762,
+        "OBSTRUCTED": 181,
+        "UNKNOWN": 2
+      },
+      "rows": 53044,
+      "source_utc_ts_minus_offset_aware_time_s_max": 0.0,
+      "source_utc_ts_minus_offset_aware_time_s_min": -0.0009992122650146484,
+      "sum_intervals_at_most_2s": 24451.479083299637,
+      "timestamp_end_utc": "2024-08-19T21:43:28.481887+00:00",
+      "timestamp_start_utc": "2024-08-17T02:33:05.420036+00:00",
+      "unique_source_segment_ids": 212
+    }
+  },
+  "repository_url": "https://github.com/NUWiNS/sigmetrics26-exploring-the-5g-digital-divide-in-the-non-contiguous-us-leo-satellites-to-the-rescue",
+  "upstream_commit": "b5f330d508e08e8e1fcd2300529a45f1bbb3231d",
+  "upstream_documentation_url": "https://github.com/NUWiNS/sigmetrics26-exploring-the-5g-digital-divide-in-the-non-contiguous-us-leo-satellites-to-the-rescue/blob/b5f330d508e08e8e1fcd2300529a45f1bbb3231d/README.md",
+  "upstream_license_url": "https://github.com/NUWiNS/sigmetrics26-exploring-the-5g-digital-divide-in-the-non-contiguous-us-leo-satellites-to-the-rescue/blob/b5f330d508e08e8e1fcd2300529a45f1bbb3231d/LICENSE-DATA",
+  "warranty_notice": "Supplied as-is and as-available, without warranties; see LICENSE-CC-BY-4.0.txt."
+}

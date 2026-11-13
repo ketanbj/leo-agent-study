@@ -1,0 +1,1028 @@
+{
+  "kind": "retrospective_public_starlink_rtt_forecasting",
+  "not_measured": [
+    "agent task benefit",
+    "browser or LLM task performance",
+    "Helene recovery-hub conditions",
+    "available bandwidth",
+    "packet loss"
+  ],
+  "split": {
+    "rule": "chronological 60/20/20 row-count split",
+    "train_end_s": 1723946586.884814,
+    "test_start_s": 1724038879.697197,
+    "validation_label_rule": "target RTT available by test_start_s"
+  },
+  "availability_rule": "record timestamp + RTT; conservative when timestamp semantics uncertain",
+  "baseline_definitions": {
+    "train_median": "median of RTT observations available at the training cutoff",
+    "persistence": "last RTT received; reception order, not latest probe send time",
+    "recent_mean": "mean of up to 20 latest received RTTs in the same continuity segment"
+  },
+  "coverage_interpretation": "forecast instances conditional on recorded successful response origins and future targets; not uptime or loss",
+  "nominal_horizon_rule": "first recorded target at/after requested time, at most 0.4 seconds late",
+  "phase_bin_seconds": 0.5,
+  "candidate_period_seconds": [
+    5,
+    10,
+    15,
+    30
+  ],
+  "model_selection": "validation MAE only; training profile frozen before validation/test; no test-based candidate selection",
+  "online_history": "adaptive test predictions may use earlier test RTTs only after their reception",
+  "horizons": {
+    "0.5": {
+      "validation_selected_baseline": "train_median",
+      "validation_selected_phase_candidate": "phase_adaptive_5s",
+      "coverage": {
+        "validation": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 1239,
+          "eligible_fraction": 0.909024211298606,
+          "unique_recorded_targets": 1028,
+          "reused_target_forecasts": 211,
+          "maximum_forecasts_per_target": 4,
+          "continuity_segments": 21,
+          "actual_lead_s": {
+            "min": 0.5001769065856934,
+            "median": 0.620326042175293,
+            "max": 0.8980059623718262
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 74,
+            "target_crosses_test_boundary": 3,
+            "target_more_than_0.4s_late": 47
+          }
+        },
+        "test": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 1325,
+          "eligible_fraction": 0.9721203228173148,
+          "unique_recorded_targets": 1108,
+          "reused_target_forecasts": 217,
+          "maximum_forecasts_per_target": 3,
+          "continuity_segments": 10,
+          "actual_lead_s": {
+            "min": 0.5000128746032715,
+            "median": 0.6256389617919922,
+            "max": 0.842390775680542
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 33,
+            "no_recorded_future_target": 4,
+            "target_more_than_0.4s_late": 1
+          }
+        }
+      },
+      "validation": {
+        "train_median": {
+          "n": 1239,
+          "mae_ms": 22.05593220338983,
+          "rmse_ms": 36.92933952614053,
+          "bias_ms": -14.300807102502018,
+          "p90_absolute_error_ms": 48.0
+        },
+        "persistence": {
+          "n": 1239,
+          "mae_ms": 24.19854721549637,
+          "rmse_ms": 53.09941579745176,
+          "bias_ms": -0.05940274414850676,
+          "p90_absolute_error_ms": 51.0
+        },
+        "recent_mean": {
+          "n": 1239,
+          "mae_ms": 28.22255753674148,
+          "rmse_ms": 45.34581025186505,
+          "bias_ms": 2.6996406197606824,
+          "p90_absolute_error_ms": 49.09
+        },
+        "phase_adaptive_5s": {
+          "n": 1239,
+          "mae_ms": 28.15333280125654,
+          "rmse_ms": 45.374418566668616,
+          "bias_ms": 2.6108841752791205,
+          "p90_absolute_error_ms": 48.69
+        },
+        "phase_adaptive_10s": {
+          "n": 1239,
+          "mae_ms": 28.15456588543188,
+          "rmse_ms": 45.367513747576645,
+          "bias_ms": 2.6032559058306255,
+          "p90_absolute_error_ms": 47.833333333333314
+        },
+        "phase_adaptive_15s": {
+          "n": 1239,
+          "mae_ms": 28.192183278651832,
+          "rmse_ms": 45.27828634381887,
+          "bias_ms": 2.136923002446423,
+          "p90_absolute_error_ms": 48.55
+        },
+        "phase_adaptive_30s": {
+          "n": 1239,
+          "mae_ms": 28.953453231441287,
+          "rmse_ms": 45.82829656739421,
+          "bias_ms": 2.275936323260769,
+          "p90_absolute_error_ms": 51.205
+        }
+      },
+      "test": {
+        "train_median": {
+          "n": 1325,
+          "mae_ms": 21.861358490566037,
+          "rmse_ms": 32.96389986545316,
+          "bias_ms": -16.055622641509434,
+          "p90_absolute_error_ms": 50.0
+        },
+        "persistence": {
+          "n": 1325,
+          "mae_ms": 20.582264150943395,
+          "rmse_ms": 29.84136865190449,
+          "bias_ms": -1.5396981132075471,
+          "p90_absolute_error_ms": 48.0
+        },
+        "recent_mean": {
+          "n": 1325,
+          "mae_ms": 21.893354880982354,
+          "rmse_ms": 28.958040084191776,
+          "bias_ms": -2.467651190404704,
+          "p90_absolute_error_ms": 40.525000000000006
+        },
+        "phase_adaptive_5s": {
+          "n": 1325,
+          "mae_ms": 21.975879035503898,
+          "rmse_ms": 29.06636745982302,
+          "bias_ms": -2.4061696050793193,
+          "p90_absolute_error_ms": 40.11
+        },
+        "phase_adaptive_10s": {
+          "n": 1325,
+          "mae_ms": 21.995450198007042,
+          "rmse_ms": 29.1265786433835,
+          "bias_ms": -2.412329602399081,
+          "p90_absolute_error_ms": 40.405
+        },
+        "phase_adaptive_15s": {
+          "n": 1325,
+          "mae_ms": 22.062893599115608,
+          "rmse_ms": 29.19683882797192,
+          "bias_ms": -2.555061524300741,
+          "p90_absolute_error_ms": 41.010000000000005
+        },
+        "phase_adaptive_30s": {
+          "n": 1325,
+          "mae_ms": 21.18580324355662,
+          "rmse_ms": 28.599569394542076,
+          "bias_ms": -2.6407747461575166,
+          "p90_absolute_error_ms": 40.19499999999999
+        }
+      },
+      "paired_intervals": [
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_5s",
+          "mae_reduction_ms": -0.11452054493785886,
+          "descriptive_95pct_interval_ms": [
+            -3.1473213573721113,
+            3.721976332037254
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 27,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_5s",
+          "mae_reduction_ms": -0.11452054493785886,
+          "descriptive_95pct_interval_ms": [
+            -3.1609402069293173,
+            5.072054783313546
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_5s",
+          "mae_reduction_ms": -0.11452054493785886,
+          "descriptive_95pct_interval_ms": [
+            -3.2203508746827803,
+            5.029372142992745
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ],
+      "paired_intervals_vs_recent_mean": [
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_5s",
+          "mae_reduction_ms": -0.0825241545215431,
+          "descriptive_95pct_interval_ms": [
+            -0.249049041190091,
+            0.08946765086983095
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 27,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_5s",
+          "mae_reduction_ms": -0.0825241545215431,
+          "descriptive_95pct_interval_ms": [
+            -0.23496923704535316,
+            0.043690513832865506
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_5s",
+          "mae_reduction_ms": -0.0825241545215431,
+          "descriptive_95pct_interval_ms": [
+            -0.23406028803530798,
+            0.04285439834198249
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ]
+    },
+    "1.0": {
+      "validation_selected_baseline": "train_median",
+      "validation_selected_phase_candidate": "phase_adaptive_10s",
+      "coverage": {
+        "validation": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 1190,
+          "eligible_fraction": 0.8730741012472487,
+          "unique_recorded_targets": 1104,
+          "reused_target_forecasts": 86,
+          "maximum_forecasts_per_target": 3,
+          "continuity_segments": 20,
+          "actual_lead_s": {
+            "min": 1.0005650520324707,
+            "median": 1.1065865755081177,
+            "max": 1.376223087310791
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 115,
+            "target_crosses_test_boundary": 5,
+            "target_more_than_0.4s_late": 53
+          }
+        },
+        "test": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 1304,
+          "eligible_fraction": 0.9567131327953045,
+          "unique_recorded_targets": 1252,
+          "reused_target_forecasts": 52,
+          "maximum_forecasts_per_target": 2,
+          "continuity_segments": 10,
+          "actual_lead_s": {
+            "min": 1.0001888275146484,
+            "median": 1.1020978689193726,
+            "max": 1.3703088760375977
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 52,
+            "no_recorded_future_target": 6,
+            "target_more_than_0.4s_late": 1
+          }
+        }
+      },
+      "validation": {
+        "train_median": {
+          "n": 1190,
+          "mae_ms": 21.481932773109243,
+          "rmse_ms": 31.321540766162613,
+          "bias_ms": -13.581932773109244,
+          "p90_absolute_error_ms": 49.0
+        },
+        "persistence": {
+          "n": 1190,
+          "mae_ms": 26.903865546218487,
+          "rmse_ms": 68.82137993483168,
+          "bias_ms": 2.057983193277311,
+          "p90_absolute_error_ms": 55.0
+        },
+        "recent_mean": {
+          "n": 1190,
+          "mae_ms": 28.366500624516767,
+          "rmse_ms": 43.45035426730719,
+          "bias_ms": 4.332149156842441,
+          "p90_absolute_error_ms": 49.25500000000001
+        },
+        "phase_adaptive_5s": {
+          "n": 1190,
+          "mae_ms": 28.292105699187886,
+          "rmse_ms": 43.428834778941926,
+          "bias_ms": 4.30005689471369,
+          "p90_absolute_error_ms": 49.290000000000006
+        },
+        "phase_adaptive_10s": {
+          "n": 1190,
+          "mae_ms": 28.2560844000229,
+          "rmse_ms": 43.443638304494,
+          "bias_ms": 4.266903694463633,
+          "p90_absolute_error_ms": 49.22222222222223
+        },
+        "phase_adaptive_15s": {
+          "n": 1190,
+          "mae_ms": 28.32687355402588,
+          "rmse_ms": 43.31179875776795,
+          "bias_ms": 3.9378573000230714,
+          "p90_absolute_error_ms": 50.245000000000005
+        },
+        "phase_adaptive_30s": {
+          "n": 1190,
+          "mae_ms": 29.217755871012663,
+          "rmse_ms": 44.05098000517202,
+          "bias_ms": 4.046030366726786,
+          "p90_absolute_error_ms": 51.795
+        }
+      },
+      "test": {
+        "train_median": {
+          "n": 1304,
+          "mae_ms": 21.611579754601227,
+          "rmse_ms": 31.38534091312581,
+          "bias_ms": -15.267254601226995,
+          "p90_absolute_error_ms": 50.0
+        },
+        "persistence": {
+          "n": 1304,
+          "mae_ms": 21.354601226993864,
+          "rmse_ms": 30.767613041474938,
+          "bias_ms": -0.6986196319018405,
+          "p90_absolute_error_ms": 48.400000000000006
+        },
+        "recent_mean": {
+          "n": 1304,
+          "mae_ms": 22.146514137526875,
+          "rmse_ms": 28.191191946439808,
+          "bias_ms": -1.7694576896366818,
+          "p90_absolute_error_ms": 40.545
+        },
+        "phase_adaptive_5s": {
+          "n": 1304,
+          "mae_ms": 22.245768884720736,
+          "rmse_ms": 28.304314699110414,
+          "bias_ms": -1.673857152400382,
+          "p90_absolute_error_ms": 40.77499999999999
+        },
+        "phase_adaptive_10s": {
+          "n": 1304,
+          "mae_ms": 22.25783901362392,
+          "rmse_ms": 28.35950127560749,
+          "bias_ms": -1.6963548490634832,
+          "p90_absolute_error_ms": 40.77499999999999
+        },
+        "phase_adaptive_15s": {
+          "n": 1304,
+          "mae_ms": 22.320459604201154,
+          "rmse_ms": 28.454153349185468,
+          "bias_ms": -1.7026200304436208,
+          "p90_absolute_error_ms": 41.754999999999995
+        },
+        "phase_adaptive_30s": {
+          "n": 1304,
+          "mae_ms": 21.48563033913065,
+          "rmse_ms": 27.757960062800027,
+          "bias_ms": -1.8673784805664948,
+          "p90_absolute_error_ms": 40.655
+        }
+      },
+      "paired_intervals": [
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.64625925902269,
+          "descriptive_95pct_interval_ms": [
+            -3.4481093251602495,
+            3.3181447889672424
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 26,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.64625925902269,
+          "descriptive_95pct_interval_ms": [
+            -3.5064652215483765,
+            4.233378722772118
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.64625925902269,
+          "descriptive_95pct_interval_ms": [
+            -3.558401048868441,
+            4.135923366280065
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ],
+      "paired_intervals_vs_recent_mean": [
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.11132487609704068,
+          "descriptive_95pct_interval_ms": [
+            -0.34794261257130926,
+            0.11868814877095103
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 26,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.11132487609704068,
+          "descriptive_95pct_interval_ms": [
+            -0.27299926796274837,
+            0.04213044807775405
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.11132487609704068,
+          "descriptive_95pct_interval_ms": [
+            -0.2793145796642002,
+            0.037149513118850015
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ]
+    },
+    "2.0": {
+      "validation_selected_baseline": "train_median",
+      "validation_selected_phase_candidate": "phase_adaptive_10s",
+      "coverage": {
+        "validation": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 1110,
+          "eligible_fraction": 0.8143800440205429,
+          "unique_recorded_targets": 1020,
+          "reused_target_forecasts": 90,
+          "maximum_forecasts_per_target": 4,
+          "continuity_segments": 19,
+          "actual_lead_s": {
+            "min": 2.000124216079712,
+            "median": 2.116466522216797,
+            "max": 2.3910930156707764
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 187,
+            "target_crosses_test_boundary": 9,
+            "target_more_than_0.4s_late": 57
+          }
+        },
+        "test": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 1254,
+          "eligible_fraction": 0.9200293470286134,
+          "unique_recorded_targets": 1189,
+          "reused_target_forecasts": 65,
+          "maximum_forecasts_per_target": 3,
+          "continuity_segments": 10,
+          "actual_lead_s": {
+            "min": 2.0001609325408936,
+            "median": 2.1107484102249146,
+            "max": 2.3889429569244385
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 97,
+            "no_recorded_future_target": 11,
+            "target_more_than_0.4s_late": 1
+          }
+        }
+      },
+      "validation": {
+        "train_median": {
+          "n": 1110,
+          "mae_ms": 24.236216216216217,
+          "rmse_ms": 41.71255174372545,
+          "bias_ms": -16.657477477477478,
+          "p90_absolute_error_ms": 50.0
+        },
+        "persistence": {
+          "n": 1110,
+          "mae_ms": 35.55954954954955,
+          "rmse_ms": 77.92300386619814,
+          "bias_ms": -0.5907207207207207,
+          "p90_absolute_error_ms": 59.400000000000006
+        },
+        "recent_mean": {
+          "n": 1110,
+          "mae_ms": 30.482884758695516,
+          "rmse_ms": 52.2206581785951,
+          "bias_ms": 1.2424011425269164,
+          "p90_absolute_error_ms": 55.96153846153847
+        },
+        "phase_adaptive_5s": {
+          "n": 1110,
+          "mae_ms": 30.432615802613867,
+          "rmse_ms": 52.24757175617875,
+          "bias_ms": 1.1904490219370252,
+          "p90_absolute_error_ms": 56.33500000000001
+        },
+        "phase_adaptive_10s": {
+          "n": 1110,
+          "mae_ms": 30.35375624499231,
+          "rmse_ms": 52.18904726085756,
+          "bias_ms": 1.1096060927988172,
+          "p90_absolute_error_ms": 56.099999999999994
+        },
+        "phase_adaptive_15s": {
+          "n": 1110,
+          "mae_ms": 30.70255573436959,
+          "rmse_ms": 52.58068997681016,
+          "bias_ms": 0.8791165029497072,
+          "p90_absolute_error_ms": 55.33333333333334
+        },
+        "phase_adaptive_30s": {
+          "n": 1110,
+          "mae_ms": 31.462211761267877,
+          "rmse_ms": 52.99444277458849,
+          "bias_ms": 0.9012264816541133,
+          "p90_absolute_error_ms": 57.015
+        }
+      },
+      "test": {
+        "train_median": {
+          "n": 1254,
+          "mae_ms": 22.36602870813397,
+          "rmse_ms": 33.207815513283535,
+          "bias_ms": -16.204944178628388,
+          "p90_absolute_error_ms": 50.0
+        },
+        "persistence": {
+          "n": 1254,
+          "mae_ms": 28.530382775119616,
+          "rmse_ms": 37.16649562615753,
+          "bias_ms": -1.3543062200956937,
+          "p90_absolute_error_ms": 55.0
+        },
+        "recent_mean": {
+          "n": 1254,
+          "mae_ms": 21.30140407404989,
+          "rmse_ms": 28.440680121712134,
+          "bias_ms": -3.0809512179316054,
+          "p90_absolute_error_ms": 39.709999999999994
+        },
+        "phase_adaptive_5s": {
+          "n": 1254,
+          "mae_ms": 21.4074846210207,
+          "rmse_ms": 28.53188289346848,
+          "bias_ms": -3.002431998987319,
+          "p90_absolute_error_ms": 39.95
+        },
+        "phase_adaptive_10s": {
+          "n": 1254,
+          "mae_ms": 21.437024863328375,
+          "rmse_ms": 28.61351175315194,
+          "bias_ms": -3.0271026500628246,
+          "p90_absolute_error_ms": 40.349999999999994
+        },
+        "phase_adaptive_15s": {
+          "n": 1254,
+          "mae_ms": 21.44931926020775,
+          "rmse_ms": 28.65827793938713,
+          "bias_ms": -3.109056235804212,
+          "p90_absolute_error_ms": 40.53
+        },
+        "phase_adaptive_30s": {
+          "n": 1254,
+          "mae_ms": 20.95383440689312,
+          "rmse_ms": 28.197704434184352,
+          "bias_ms": -3.2933026624072643,
+          "p90_absolute_error_ms": 39.885000000000005
+        }
+      },
+      "paired_intervals": [
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": 0.9290038448055951,
+          "descriptive_95pct_interval_ms": [
+            -1.725090264913242,
+            4.803715708887971
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 26,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": 0.9290038448055951,
+          "descriptive_95pct_interval_ms": [
+            -1.6975628283749815,
+            5.375870249245076
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": 0.9290038448055951,
+          "descriptive_95pct_interval_ms": [
+            -1.7171226276377158,
+            5.46796826499344
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ],
+      "paired_intervals_vs_recent_mean": [
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.1356207892784843,
+          "descriptive_95pct_interval_ms": [
+            -0.37097030003082254,
+            0.08171569938082063
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 26,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.1356207892784843,
+          "descriptive_95pct_interval_ms": [
+            -0.27487532397297054,
+            -0.032122835584500874
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.1356207892784843,
+          "descriptive_95pct_interval_ms": [
+            -0.2633925763237948,
+            -0.024130659355570475
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ]
+    },
+    "5.0": {
+      "validation_selected_baseline": "train_median",
+      "validation_selected_phase_candidate": "phase_adaptive_10s",
+      "coverage": {
+        "validation": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 907,
+          "eligible_fraction": 0.6654438738077769,
+          "unique_recorded_targets": 845,
+          "reused_target_forecasts": 62,
+          "maximum_forecasts_per_target": 4,
+          "continuity_segments": 14,
+          "actual_lead_s": {
+            "min": 5.000364065170288,
+            "median": 5.131150007247925,
+            "max": 5.394240856170654
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 400,
+            "target_crosses_test_boundary": 22,
+            "target_more_than_0.4s_late": 34
+          }
+        },
+        "test": {
+          "candidate_response_origins": 1363,
+          "eligible_forecasts": 1105,
+          "eligible_fraction": 0.8107116654438739,
+          "unique_recorded_targets": 1068,
+          "reused_target_forecasts": 37,
+          "maximum_forecasts_per_target": 3,
+          "continuity_segments": 10,
+          "actual_lead_s": {
+            "min": 5.000428915023804,
+            "median": 5.1260459423065186,
+            "max": 5.390700101852417
+          },
+          "excluded_origins_by_reason": {
+            "different_continuity_segment": 231,
+            "no_recorded_future_target": 26,
+            "target_more_than_0.4s_late": 1
+          }
+        }
+      },
+      "validation": {
+        "train_median": {
+          "n": 907,
+          "mae_ms": 24.86306504961411,
+          "rmse_ms": 41.56536303980335,
+          "bias_ms": -17.5316427783903,
+          "p90_absolute_error_ms": 51.0
+        },
+        "persistence": {
+          "n": 907,
+          "mae_ms": 29.7425578831312,
+          "rmse_ms": 82.63970664009639,
+          "bias_ms": -1.4810363836824696,
+          "p90_absolute_error_ms": 58.5
+        },
+        "recent_mean": {
+          "n": 907,
+          "mae_ms": 29.196034463460705,
+          "rmse_ms": 53.219994604088974,
+          "bias_ms": -0.006735597884406952,
+          "p90_absolute_error_ms": 57.849999999999994
+        },
+        "phase_adaptive_5s": {
+          "n": 907,
+          "mae_ms": 29.09552150661175,
+          "rmse_ms": 53.276355032355966,
+          "bias_ms": -0.05449132218342521,
+          "p90_absolute_error_ms": 58.495000000000005
+        },
+        "phase_adaptive_10s": {
+          "n": 907,
+          "mae_ms": 29.041447787611187,
+          "rmse_ms": 53.22040806630622,
+          "bias_ms": -0.13953124205389897,
+          "p90_absolute_error_ms": 57.894999999999996
+        },
+        "phase_adaptive_15s": {
+          "n": 907,
+          "mae_ms": 29.506259004166054,
+          "rmse_ms": 53.587505610042115,
+          "bias_ms": -0.24388954210351946,
+          "p90_absolute_error_ms": 58.44
+        },
+        "phase_adaptive_30s": {
+          "n": 907,
+          "mae_ms": 29.6988866783684,
+          "rmse_ms": 53.6364111446229,
+          "bias_ms": -0.1018668438340001,
+          "p90_absolute_error_ms": 58.215
+        }
+      },
+      "test": {
+        "train_median": {
+          "n": 1105,
+          "mae_ms": 24.214027149321268,
+          "rmse_ms": 34.20202727446515,
+          "bias_ms": -18.681900452488687,
+          "p90_absolute_error_ms": 52.0
+        },
+        "persistence": {
+          "n": 1105,
+          "mae_ms": 22.604072398190045,
+          "rmse_ms": 33.291103672158535,
+          "bias_ms": -5.254389140271493,
+          "p90_absolute_error_ms": 51.8
+        },
+        "recent_mean": {
+          "n": 1105,
+          "mae_ms": 20.09162924068555,
+          "rmse_ms": 27.472292541928805,
+          "bias_ms": -6.781939210213785,
+          "p90_absolute_error_ms": 41.29230769230769
+        },
+        "phase_adaptive_5s": {
+          "n": 1105,
+          "mae_ms": 20.1722915979548,
+          "rmse_ms": 27.531175497228528,
+          "bias_ms": -6.722696585276107,
+          "p90_absolute_error_ms": 40.97222222222223
+        },
+        "phase_adaptive_10s": {
+          "n": 1105,
+          "mae_ms": 20.189079436580304,
+          "rmse_ms": 27.545490222717962,
+          "bias_ms": -6.790196129573559,
+          "p90_absolute_error_ms": 41.0
+        },
+        "phase_adaptive_15s": {
+          "n": 1105,
+          "mae_ms": 20.38509039955487,
+          "rmse_ms": 27.82778947005142,
+          "bias_ms": -6.99867558343754,
+          "p90_absolute_error_ms": 42.75
+        },
+        "phase_adaptive_30s": {
+          "n": 1105,
+          "mae_ms": 19.980781275794673,
+          "rmse_ms": 27.460567847756096,
+          "bias_ms": -6.902788722768062,
+          "p90_absolute_error_ms": 41.94999999999999
+        }
+      },
+      "paired_intervals": [
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": 4.024947712740962,
+          "descriptive_95pct_interval_ms": [
+            1.1602753943571726,
+            8.444997676920654
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 25,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": 4.024947712740962,
+          "descriptive_95pct_interval_ms": [
+            1.5835014886596555,
+            8.056164867208366
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "train_median",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": 4.024947712740962,
+          "descriptive_95pct_interval_ms": [
+            1.6786556289470287,
+            8.119988676024386
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ],
+      "paired_intervals_vs_recent_mean": [
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.09745019589475525,
+          "descriptive_95pct_interval_ms": [
+            -0.29206230203412337,
+            0.10845964148857773
+          ],
+          "block_seconds": 15,
+          "occupied_blocks": 25,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.09745019589475525,
+          "descriptive_95pct_interval_ms": [
+            -0.23522681555038863,
+            0.05285292221087121
+          ],
+          "block_seconds": 60,
+          "occupied_blocks": 11,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        },
+        {
+          "baseline": "recent_mean",
+          "candidate": "phase_adaptive_10s",
+          "mae_reduction_ms": -0.09745019589475525,
+          "descriptive_95pct_interval_ms": [
+            -0.23355760341744716,
+            0.03949171359050527
+          ],
+          "block_seconds": 120,
+          "occupied_blocks": 10,
+          "continuity_segments": 10,
+          "resampling_unit": "occupied time bins separated by continuity segment",
+          "interpretation": "descriptive trace resampling; not independent-user or causal inference",
+          "bootstrap_repetitions": 2000,
+          "seed": 20261113
+        }
+      ]
+    }
+  },
+  "seed": 20261113,
+  "data": {
+    "path": "data/hawaii_starlink_ping.csv",
+    "valid_samples": 6815,
+    "invalid_or_missing_rows": 0,
+    "segments": 70,
+    "gap_threshold_s": 2.0,
+    "sha256": "a332680afb19e7c746f49ec0eee432b4d9451a097b612392ee808e0fbe8daa52"
+  }
+}

@@ -1,0 +1,466 @@
+{
+  "aggregate": {
+    "progress_control": {
+      "asap": {
+        "chain_completion_rate": 1.0,
+        "completed_chains": 648,
+        "mean_attempts_started": 6.0,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.0,
+        "mean_observed_stop_s": 12.700491859511835,
+        "mean_policy_wait_s": 0.0,
+        "mean_restricted_completion_s": 12.700491859511835,
+        "mean_transmitted_bytes": 285696.0,
+        "median_restricted_completion_s": 9.028593749999999,
+        "p95_restricted_completion_s": 29.18112872690952,
+        "runs": 648
+      },
+      "deliberate_wait_control": {
+        "chain_completion_rate": 0.9938271604938271,
+        "completed_chains": 644,
+        "mean_attempts_started": 6.0,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.006172839506172839,
+        "mean_observed_stop_s": 24.975441936205097,
+        "mean_policy_wait_s": 10.833333333333334,
+        "mean_restricted_completion_s": 24.975441936205097,
+        "mean_transmitted_bytes": 285670.7160493827,
+        "median_restricted_completion_s": 24.89463583440388,
+        "p95_restricted_completion_s": 59.87714823342766,
+        "runs": 648
+      },
+      "ideal_reactive": {
+        "chain_completion_rate": 1.0,
+        "completed_chains": 648,
+        "mean_attempts_started": 6.0,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.0,
+        "mean_observed_stop_s": 12.700491859511835,
+        "mean_policy_wait_s": 0.32994775429136036,
+        "mean_restricted_completion_s": 12.700491859511835,
+        "mean_transmitted_bytes": 285696.0,
+        "median_restricted_completion_s": 9.028593749999999,
+        "p95_restricted_completion_s": 29.18112872690952,
+        "runs": 648
+      },
+      "perfect_future_oracle": {
+        "chain_completion_rate": 1.0,
+        "completed_chains": 648,
+        "mean_attempts_started": 6.0,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.0,
+        "mean_observed_stop_s": 12.700491859511835,
+        "mean_policy_wait_s": 0.0,
+        "mean_restricted_completion_s": 12.700491859511835,
+        "mean_transmitted_bytes": 285696.0,
+        "median_restricted_completion_s": 9.028593749999999,
+        "p95_restricted_completion_s": 29.18112872690952,
+        "runs": 648
+      }
+    },
+    "restart_on_outage": {
+      "asap": {
+        "chain_completion_rate": 0.6782407407407407,
+        "completed_chains": 7032,
+        "mean_attempts_started": 7.058641975308642,
+        "mean_backoff_wait_s": 1.2345192738839383,
+        "mean_failed_attempts": 2.353587962962963,
+        "mean_observed_stop_s": 15.89473931948266,
+        "mean_policy_wait_s": 0.0,
+        "mean_restricted_completion_s": 25.309369704300693,
+        "mean_transmitted_bytes": 281440.2930799825,
+        "median_restricted_completion_s": 14.628803815544018,
+        "p95_restricted_completion_s": 90.0,
+        "runs": 10368
+      },
+      "ideal_reactive": {
+        "chain_completion_rate": 0.7575231481481481,
+        "completed_chains": 7854,
+        "mean_attempts_started": 6.599344135802469,
+        "mean_backoff_wait_s": 0.7625862919620957,
+        "mean_failed_attempts": 1.4469521604938271,
+        "mean_observed_stop_s": 16.209922210338007,
+        "mean_policy_wait_s": 1.445251286248551,
+        "mean_restricted_completion_s": 20.785126338750384,
+        "mean_transmitted_bytes": 302434.2246339117,
+        "median_restricted_completion_s": 11.977338650391848,
+        "p95_restricted_completion_s": 90.0,
+        "runs": 10368
+      },
+      "perfect_future_oracle": {
+        "chain_completion_rate": 0.7901234567901234,
+        "completed_chains": 8192,
+        "mean_attempts_started": 5.354938271604938,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.06172839506172839,
+        "mean_observed_stop_s": 19.095321124434125,
+        "mean_policy_wait_s": 11.08904246057419,
+        "mean_restricted_completion_s": 19.095321124434125,
+        "mean_transmitted_bytes": 276257.17717325984,
+        "median_restricted_completion_s": 10.865798842460405,
+        "p95_restricted_completion_s": 90.0,
+        "runs": 10368
+      }
+    },
+    "stable_control": {
+      "asap": {
+        "chain_completion_rate": 1.0,
+        "completed_chains": 12,
+        "mean_attempts_started": 6.0,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.0,
+        "mean_observed_stop_s": 11.53195068359375,
+        "mean_policy_wait_s": 0.0,
+        "mean_restricted_completion_s": 11.53195068359375,
+        "mean_transmitted_bytes": 285696.0,
+        "median_restricted_completion_s": 7.910368652343749,
+        "p95_restricted_completion_s": 25.059843750000006,
+        "runs": 12
+      },
+      "ideal_reactive": {
+        "chain_completion_rate": 1.0,
+        "completed_chains": 12,
+        "mean_attempts_started": 6.0,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.0,
+        "mean_observed_stop_s": 11.53195068359375,
+        "mean_policy_wait_s": 0.0,
+        "mean_restricted_completion_s": 11.53195068359375,
+        "mean_transmitted_bytes": 285696.0,
+        "median_restricted_completion_s": 7.910368652343749,
+        "p95_restricted_completion_s": 25.059843750000006,
+        "runs": 12
+      },
+      "perfect_future_oracle": {
+        "chain_completion_rate": 1.0,
+        "completed_chains": 12,
+        "mean_attempts_started": 6.0,
+        "mean_backoff_wait_s": 0.0,
+        "mean_failed_attempts": 0.0,
+        "mean_observed_stop_s": 11.53195068359375,
+        "mean_policy_wait_s": 0.0,
+        "mean_restricted_completion_s": 11.53195068359375,
+        "mean_transmitted_bytes": 285696.0,
+        "median_restricted_completion_s": 7.910368652343749,
+        "p95_restricted_completion_s": 25.059843750000006,
+        "runs": 12
+      }
+    }
+  },
+  "interpretation": "Synthetic upper-bound and sensitivity results; not measured LEO or live-agent performance.",
+  "negative_control_violations": 0,
+  "paired_comparisons": {
+    "progress_control": {
+      "oracle_vs_asap": {
+        "aggregate_restricted_time_reduction_fraction": 0.0,
+        "chain_completion_rate_difference_pp": 0.0,
+        "equal_restricted_time": 648,
+        "mean_failed_attempts_avoided": 0.0,
+        "mean_restricted_time_reduction_s": 0.0,
+        "mean_transmitted_bytes_saved": 0.0,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 0,
+        "paired_scenarios": 648
+      },
+      "oracle_vs_ideal_reactive": {
+        "aggregate_restricted_time_reduction_fraction": 0.0,
+        "chain_completion_rate_difference_pp": 0.0,
+        "equal_restricted_time": 648,
+        "mean_failed_attempts_avoided": 0.0,
+        "mean_restricted_time_reduction_s": 0.0,
+        "mean_transmitted_bytes_saved": 0.0,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 0,
+        "paired_scenarios": 648
+      }
+    },
+    "restart_on_outage": {
+      "oracle_vs_asap": {
+        "aggregate_restricted_time_reduction_fraction": 0.24552364015647424,
+        "chain_completion_rate_difference_pp": 11.188271604938272,
+        "equal_restricted_time": 5563,
+        "mean_failed_attempts_avoided": 2.2918595679012346,
+        "mean_restricted_time_reduction_s": 6.214048579865894,
+        "mean_transmitted_bytes_saved": 5183.115906724431,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 4805,
+        "paired_scenarios": 10368
+      },
+      "oracle_vs_ideal_reactive": {
+        "aggregate_restricted_time_reduction_fraction": 0.08129877041766694,
+        "chain_completion_rate_difference_pp": 3.260030864197531,
+        "equal_restricted_time": 8192,
+        "mean_failed_attempts_avoided": 1.3852237654320987,
+        "mean_restricted_time_reduction_s": 1.6898052143162696,
+        "mean_transmitted_bytes_saved": 26177.047460653244,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 2176,
+        "paired_scenarios": 10368
+      }
+    },
+    "stable_control": {
+      "oracle_vs_asap": {
+        "aggregate_restricted_time_reduction_fraction": 0.0,
+        "chain_completion_rate_difference_pp": 0.0,
+        "equal_restricted_time": 12,
+        "mean_failed_attempts_avoided": 0.0,
+        "mean_restricted_time_reduction_s": 0.0,
+        "mean_transmitted_bytes_saved": 0.0,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 0,
+        "paired_scenarios": 12
+      },
+      "oracle_vs_ideal_reactive": {
+        "aggregate_restricted_time_reduction_fraction": 0.0,
+        "chain_completion_rate_difference_pp": 0.0,
+        "equal_restricted_time": 12,
+        "mean_failed_attempts_avoided": 0.0,
+        "mean_restricted_time_reduction_s": 0.0,
+        "mean_transmitted_bytes_saved": 0.0,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 0,
+        "paired_scenarios": 12
+      }
+    }
+  },
+  "policy_runs": 33732,
+  "restart_breakdown_by_detection_delay_ratio": {
+    "0.0": {
+      "oracle_vs_ideal_reactive": {
+        "aggregate_restricted_time_reduction_fraction": 0.0029589407281898966,
+        "chain_completion_rate_difference_pp": 0.0,
+        "equal_restricted_time": 2468,
+        "mean_failed_attempts_avoided": 1.3155864197530864,
+        "mean_restricted_time_reduction_s": 0.05666960539641204,
+        "mean_transmitted_bytes_saved": 29113.842235924716,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 124,
+        "paired_scenarios": 2592
+      },
+      "policies": {
+        "asap": {
+          "chain_completion_rate": 0.5640432098765432,
+          "completed_chains": 1462,
+          "mean_attempts_started": 7.388503086419753,
+          "mean_backoff_wait_s": 1.6551664866985545,
+          "mean_failed_attempts": 3.2083333333333335,
+          "mean_observed_stop_s": 9.366331098881425,
+          "mean_policy_wait_s": 0.0,
+          "mean_restricted_completion_s": 29.998621612913915,
+          "mean_transmitted_bytes": 246182.9152476714,
+          "median_restricted_completion_s": 16.155559975510517,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "ideal_reactive": {
+          "chain_completion_rate": 0.7901234567901234,
+          "completed_chains": 2048,
+          "mean_attempts_started": 6.6705246913580245,
+          "mean_backoff_wait_s": 0.7469995126353041,
+          "mean_failed_attempts": 1.3773148148148149,
+          "mean_observed_stop_s": 15.06762115078067,
+          "mean_policy_wait_s": 2.741813130028198,
+          "mean_restricted_completion_s": 19.151990729830917,
+          "mean_transmitted_bytes": 305371.0194091844,
+          "median_restricted_completion_s": 11.468589970006148,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "perfect_future_oracle": {
+          "chain_completion_rate": 0.7901234567901234,
+          "completed_chains": 2048,
+          "mean_attempts_started": 5.354938271604938,
+          "mean_backoff_wait_s": 0.0,
+          "mean_failed_attempts": 0.06172839506172839,
+          "mean_observed_stop_s": 19.095321124434506,
+          "mean_policy_wait_s": 11.089042460573966,
+          "mean_restricted_completion_s": 19.095321124434506,
+          "mean_transmitted_bytes": 276257.17717325944,
+          "median_restricted_completion_s": 10.865798842460405,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        }
+      }
+    },
+    "0.5": {
+      "oracle_vs_ideal_reactive": {
+        "aggregate_restricted_time_reduction_fraction": 0.0044533517326215645,
+        "chain_completion_rate_difference_pp": 0.15432098765432098,
+        "equal_restricted_time": 2312,
+        "mean_failed_attempts_avoided": 1.3148148148148149,
+        "mean_restricted_time_reduction_s": 0.08541858039747671,
+        "mean_transmitted_bytes_saved": 29072.895012221983,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 280,
+        "paired_scenarios": 2592
+      },
+      "policies": {
+        "asap": {
+          "chain_completion_rate": 0.7762345679012346,
+          "completed_chains": 2012,
+          "mean_attempts_started": 7.51929012345679,
+          "mean_backoff_wait_s": 1.2280434286242592,
+          "mean_failed_attempts": 2.3348765432098766,
+          "mean_observed_stop_s": 15.820232789068324,
+          "mean_policy_wait_s": 0.0,
+          "mean_restricted_completion_s": 20.779079433599563,
+          "mean_transmitted_bytes": 306016.7747426674,
+          "median_restricted_completion_s": 13.106313259766848,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "ideal_reactive": {
+          "chain_completion_rate": 0.7885802469135802,
+          "completed_chains": 2044,
+          "mean_attempts_started": 6.66820987654321,
+          "mean_backoff_wait_s": 0.7378689070989028,
+          "mean_failed_attempts": 1.376543209876543,
+          "mean_observed_stop_s": 15.141509014670627,
+          "mean_policy_wait_s": 1.5122379975630904,
+          "mean_restricted_completion_s": 19.18073970483198,
+          "mean_transmitted_bytes": 305330.07218548167,
+          "median_restricted_completion_s": 11.536499045555962,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "perfect_future_oracle": {
+          "chain_completion_rate": 0.7901234567901234,
+          "completed_chains": 2048,
+          "mean_attempts_started": 5.354938271604938,
+          "mean_backoff_wait_s": 0.0,
+          "mean_failed_attempts": 0.06172839506172839,
+          "mean_observed_stop_s": 19.095321124434506,
+          "mean_policy_wait_s": 11.089042460573966,
+          "mean_restricted_completion_s": 19.095321124434506,
+          "mean_transmitted_bytes": 276257.17717325944,
+          "median_restricted_completion_s": 10.865798842460405,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        }
+      }
+    },
+    "1.0": {
+      "oracle_vs_ideal_reactive": {
+        "aggregate_restricted_time_reduction_fraction": 0.0653261340319351,
+        "chain_completion_rate_difference_pp": 2.623456790123457,
+        "equal_restricted_time": 1716,
+        "mean_failed_attempts_avoided": 1.3819444444444444,
+        "mean_restricted_time_reduction_s": 1.3346083083917852,
+        "mean_transmitted_bytes_saved": 26327.558889825777,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 876,
+        "paired_scenarios": 2592
+      },
+      "policies": {
+        "asap": {
+          "chain_completion_rate": 0.7561728395061729,
+          "completed_chains": 1960,
+          "mean_attempts_started": 6.860339506172839,
+          "mean_backoff_wait_s": 0.9661350228902451,
+          "mean_failed_attempts": 1.7692901234567902,
+          "mean_observed_stop_s": 16.702768026439177,
+          "mean_policy_wait_s": 0.0,
+          "mean_restricted_completion_s": 21.55919903149374,
+          "mean_transmitted_bytes": 302185.9144978355,
+          "median_restricted_completion_s": 13.739409179687495,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "ideal_reactive": {
+          "chain_completion_rate": 0.7638888888888888,
+          "completed_chains": 1980,
+          "mean_attempts_started": 6.611882716049383,
+          "mean_backoff_wait_s": 0.7662893438778994,
+          "mean_failed_attempts": 1.4436728395061729,
+          "mean_observed_stop_s": 15.73043588388863,
+          "mean_policy_wait_s": 0.6653818943865915,
+          "mean_restricted_completion_s": 20.429929432826277,
+          "mean_transmitted_bytes": 302584.7360630854,
+          "median_restricted_completion_s": 11.852661154930962,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "perfect_future_oracle": {
+          "chain_completion_rate": 0.7901234567901234,
+          "completed_chains": 2048,
+          "mean_attempts_started": 5.354938271604938,
+          "mean_backoff_wait_s": 0.0,
+          "mean_failed_attempts": 0.06172839506172839,
+          "mean_observed_stop_s": 19.095321124434506,
+          "mean_policy_wait_s": 11.089042460573966,
+          "mean_restricted_completion_s": 19.095321124434506,
+          "mean_transmitted_bytes": 276257.17717325944,
+          "median_restricted_completion_s": 10.865798842460405,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        }
+      }
+    },
+    "2.0": {
+      "oracle_vs_ideal_reactive": {
+        "aggregate_restricted_time_reduction_fraction": 0.21669365185635656,
+        "chain_completion_rate_difference_pp": 10.262345679012345,
+        "equal_restricted_time": 1696,
+        "mean_failed_attempts_avoided": 1.5285493827160495,
+        "mean_restricted_time_reduction_s": 5.282524363079395,
+        "mean_transmitted_bytes_saved": 20193.893704640577,
+        "oracle_higher_restricted_time": 0,
+        "oracle_lower_restricted_time": 896,
+        "paired_scenarios": 2592
+      },
+      "policies": {
+        "asap": {
+          "chain_completion_rate": 0.6165123456790124,
+          "completed_chains": 1598,
+          "mean_attempts_started": 6.466435185185185,
+          "mean_backoff_wait_s": 1.088732157322698,
+          "mean_failed_attempts": 2.1018518518518516,
+          "mean_observed_stop_s": 21.68962536354158,
+          "mean_policy_wait_s": 0.0,
+          "mean_restricted_completion_s": 28.90057873919453,
+          "mean_transmitted_bytes": 271375.5678317614,
+          "median_restricted_completion_s": 23.7094555271144,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "ideal_reactive": {
+          "chain_completion_rate": 0.6875,
+          "completed_chains": 1782,
+          "mean_attempts_started": 6.4467592592592595,
+          "mean_backoff_wait_s": 0.7991874042362783,
+          "mean_failed_attempts": 1.5902777777777777,
+          "mean_observed_stop_s": 18.900122792012812,
+          "mean_policy_wait_s": 0.86157212301605,
+          "mean_restricted_completion_s": 24.377845487513923,
+          "mean_transmitted_bytes": 296451.0708779001,
+          "median_restricted_completion_s": 13.723127402114391,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        },
+        "perfect_future_oracle": {
+          "chain_completion_rate": 0.7901234567901234,
+          "completed_chains": 2048,
+          "mean_attempts_started": 5.354938271604938,
+          "mean_backoff_wait_s": 0.0,
+          "mean_failed_attempts": 0.06172839506172839,
+          "mean_observed_stop_s": 19.095321124434506,
+          "mean_policy_wait_s": 11.089042460573966,
+          "mean_restricted_completion_s": 19.095321124434506,
+          "mean_transmitted_bytes": 276257.17717325944,
+          "median_restricted_completion_s": 10.865798842460405,
+          "p95_restricted_completion_s": 90.0,
+          "runs": 2592
+        }
+      }
+    }
+  },
+  "scenario_counts": {
+    "progress_control": 648,
+    "restart_on_outage": 10368,
+    "stable_control": 12
+  },
+  "schema_version": 1,
+  "seed": 20261113,
+  "study_kind": "synthetic_discrete_event_sensitivity_sweep",
+  "total_scenarios": 11028
+}

@@ -1,0 +1,48 @@
+{
+  "artifact_version": "0.1.0",
+  "run_date": "2026-11-13",
+  "environment": {
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "platform": "macOS-14.8.9-arm64-arm-64bit-Mach-O"
+  },
+  "commands": [
+    "PYTHONPATH=src python3 -m leo_agent_study forecast",
+    "PYTHONPATH=src python3 -m leo_agent_study http-probe",
+    "PYTHONPATH=src python3 -m leo_agent_study synthetic",
+    "PYTHONPATH=src python3 -m unittest discover -s tests -v"
+  ],
+  "verification": {
+    "tests_passed": 26,
+    "deterministic_forecast_reproduced_byte_for_byte": true,
+    "deterministic_synthetic_reproduced_byte_for_byte": true,
+    "http_probe_cli_reproduced_expected_counts_and_output": true,
+    "http_elapsed_times_expected_to_vary": true
+  },
+  "sha256": {
+    "data/hawaii_starlink_ping.csv": "a332680afb19e7c746f49ec0eee432b4d9451a097b612392ee808e0fbe8daa52",
+    "data/hawaii_starlink_terminal.csv.gz": "dcaa1d6e079484b41dfde4fcc8e8202a86256552811669f32f1bd0851bb67d31",
+    "data/normalize.py": "132215e70b2d2b6fdc5180fa1e8edc0d7beea12acd9dd556b5ea10d2901a2dcb",
+    "data/provenance.json": "4fc13113f67da89ff59a3f90704097a2b7f157ad7b4f6c9c4488e2eefabd2661",
+    "results/forecast/forecast_report.json": "3b9f85fded41cf59926fa3dd18fb0b7f3c22f1648344c02adfe70c69420a164f",
+    "results/forecast/forecasts.csv": "ebed13e480764cf19c5af82878647948227ad09a151823e2150782a5ca247a14",
+    "results/http_probe/events.jsonl": "82942dfb66702503909b386b7ead35239ddd8172980478128e4ec8f457545c17",
+    "results/http_probe/summary.json": "fbc682d31faf5966eed5a5f2a5a55d247f2f802c551bb734dd9986846c1d2698",
+    "results/synthetic/README.md": "a303bf4ae27fcdb93f09ddd4bb0335c2249dce65bd355afa705d11fc0a09c5c5",
+    "results/synthetic/configuration.json": "1ecbf23a62592d0abfb864103168f6601fe36dade6cd6e664446cc89421cd273",
+    "results/synthetic/manifest.json": "fc70df3aa99533dcc0c3b1f3ed938aad749fb1591eb19aa2d496c476394ce210",
+    "results/synthetic/runs.csv.gz": "abf6c8fe7e22a527e068a5d43aa7d398a2df09d12c820bf9e536d3b044c14a84",
+    "results/synthetic/summary.csv": "08ef14b23f1efe6cd16c98fd2c0a5a4f032eef5ca59b68bd451e93f7eee2249f",
+    "results/synthetic/summary.json": "fc3dc03389dee4216ba6f125c6008190c919ee2b2650f2bb9d4d7411f12fd5a8",
+    "src/leo_agent_study/__init__.py": "3e9841e3da74d09d1ab548ca3af0a690a859426d2196c1ff05ca63e9c2193191",
+    "src/leo_agent_study/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "src/leo_agent_study/cli.py": "3830451ae53f013f4a4a21c56a9be5d9afa0230298baed4d50eaa5a9b26adde0",
+    "src/leo_agent_study/forecasting.py": "faada152120edcfb5dab338cd609a02fbd4de8a8bde3a6a4d582e1412c531714",
+    "src/leo_agent_study/http_probe.py": "e9206eadd6ea1594c156e81c8ea04dd3fa6238d8682580a466320bfa16f0a061",
+    "src/leo_agent_study/scheduling.py": "eecc61929938ffc3a85e1351ffff584451983353a53919fcdd43f5f9de984086",
+    "src/leo_agent_study/synthetic_study.py": "b745f7a2c32311276c351ae16af7d41171939ba8ffdd20d171943f75e5357618",
+    "tests/test_forecasting.py": "dd2184a5eb57c015b9cee62c6ab73ddadb494629a7054f02e8a6038fb278af1a",
+    "tests/test_http_probe.py": "f20087a82d5d74476c4ff575bd152a999f50c0856cda8f69c46675d522af2d16",
+    "tests/test_scheduling.py": "44f8dc55823e4054b92e868847e76b74f2614fca22215c0d1868337b8942ed30",
+    "tests/test_synthetic_study.py": "37266461da9f144975a92214ea0a04f0da90e4bed3652fdfc14b64e0adc2b275"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "assumptions": [
+    "Fixed serial chain: three website-like exchanges and three model-like exchanges.",
+    "Capacity is integrated over time; one capacity trace serves both directions.",
+    "Fixed one-way propagation and fixed external compute costs.",
+    "Progress control preserves partial transfers and has FIFO service.",
+    "Restart model loses an entire RPC session at its first outage, including during inference.",
+    "Failure detection delays and bounded retry/backoff are explicit sweep inputs.",
+    "Ideal reactive observes the current state and resumes exactly when capacity returns, free of sensing cost.",
+    "Perfect-future admission knows the entire future trace; it is an upper bound, not a learned predictor.",
+    "Deadlines include admission waits, detection, backoff, transfer, inference, and local work.",
+    "Aggregates equally weight chosen grid points; they do not estimate a population effect."
+  ],
+  "observed_data": false,
+  "real_browser_invocations": 0,
+  "real_leo_measurements": 0,
+  "real_llm_invocations": 0,
+  "schema_version": 1,
+  "study_kind": "synthetic_discrete_event_sensitivity_sweep",
+  "sweep": {
+    "deadlines_s": [
+      30.0,
+      90.0
+    ],
+    "detection_delay_ratios": [
+      0.0,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "good_rates_bytes_per_s": [
+      262144.0,
+      8388608.0
+    ],
+    "max_attempts": [
+      3,
+      8
+    ],
+    "outage_fractions": [
+      0.05,
+      0.2,
+      0.4
+    ],
+    "periods_s": [
+      5.0,
+      15.0,
+      30.0
+    ],
+    "phase_count": 6,
+    "progress_bad_capacity_fractions": [
+      0.0,
+      0.1
+    ],
+    "progress_deadline_s": 90.0,
+    "propagation_s": 0.03,
+    "retry_backoffs_s": [
+      0.25,
+      1.0
+    ],
+    "seed": 20261113
+  },
+  "units": {
+    "capacity": "bytes/second",
+    "payload": "bytes",
+    "time": "virtual seconds"
+  },
+  "workloads": {
+    "inference_dominated": [
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_directory",
+        "request_bytes": 1024,
+        "response_bytes": 16384
+      },
+      {
+        "inference_s": 8.0,
+        "local_after_s": 0.05,
+        "name": "model_step_1",
+        "request_bytes": 8192,
+        "response_bytes": 4096
+      },
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_requirements",
+        "request_bytes": 1024,
+        "response_bytes": 16384
+      },
+      {
+        "inference_s": 8.0,
+        "local_after_s": 0.05,
+        "name": "model_step_2",
+        "request_bytes": 8192,
+        "response_bytes": 4096
+      },
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_dates",
+        "request_bytes": 1024,
+        "response_bytes": 16384
+      },
+      {
+        "inference_s": 8.0,
+        "local_after_s": 0.05,
+        "name": "model_step_3",
+        "request_bytes": 8192,
+        "response_bytes": 4096
+      }
+    ],
+    "mixed": [
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_directory",
+        "request_bytes": 1024,
+        "response_bytes": 131072
+      },
+      {
+        "inference_s": 2.0,
+        "local_after_s": 0.05,
+        "name": "model_step_1",
+        "request_bytes": 65536,
+        "response_bytes": 4096
+      },
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_requirements",
+        "request_bytes": 1024,
+        "response_bytes": 131072
+      },
+      {
+        "inference_s": 2.0,
+        "local_after_s": 0.05,
+        "name": "model_step_2",
+        "request_bytes": 65536,
+        "response_bytes": 4096
+      },
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_dates",
+        "request_bytes": 1024,
+        "response_bytes": 131072
+      },
+      {
+        "inference_s": 2.0,
+        "local_after_s": 0.05,
+        "name": "model_step_3",
+        "request_bytes": 65536,
+        "response_bytes": 4096
+      }
+    ],
+    "short_model_wait": [
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_directory",
+        "request_bytes": 1024,
+        "response_bytes": 32768
+      },
+      {
+        "inference_s": 0.25,
+        "local_after_s": 0.05,
+        "name": "model_step_1",
+        "request_bytes": 16384,
+        "response_bytes": 4096
+      },
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_requirements",
+        "request_bytes": 1024,
+        "response_bytes": 32768
+      },
+      {
+        "inference_s": 0.25,
+        "local_after_s": 0.05,
+        "name": "model_step_2",
+        "request_bytes": 16384,
+        "response_bytes": 4096
+      },
+      {
+        "inference_s": 0.02,
+        "local_after_s": 0.05,
+        "name": "fetch_dates",
+        "request_bytes": 1024,
+        "response_bytes": 32768
+      },
+      {
+        "inference_s": 0.25,
+        "local_after_s": 0.05,
+        "name": "model_step_3",
+        "request_bytes": 16384,
+        "response_bytes": 4096
+      }
+    ]
+  }
+}
